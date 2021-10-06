@@ -34,6 +34,7 @@ package invites
 // remove role
 // could some users also require second factors e.g biometric or OTP?
 // some users have expiring PINs e.g professionals
+// user preferences i.e preferred languages, opt-ins, promotional messages etc
 
 // terms and conditions (served from API)
 
