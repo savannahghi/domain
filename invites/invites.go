@@ -1,9 +1,5 @@
 package invites
 
-// facilities
-// MFL codes
-// names
-
 // roles
 // name
 // permissions
@@ -35,6 +31,13 @@ package invites
 // could some users also require second factors e.g biometric or OTP?
 // some users have expiring PINs e.g professionals
 // user preferences i.e preferred languages, opt-ins, promotional messages etc
+// fetch profile
+// update profile
+// inactivate profile
+// delete profile | forget me
+// suspend profile
+// reactivate profile
+// request data export for GDPR; ?automate
 
 // terms and conditions (served from API)
 
