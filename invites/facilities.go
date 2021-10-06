@@ -3,7 +3,6 @@ package invites
 // Facility models the details of healthcare facilities that are on the platform.
 //
 // e.g CCC clinics, Pharmacies.
-//
 type Facility struct {
 	ID          *string // globally unique when set
 	Name        string  // unique within this structure

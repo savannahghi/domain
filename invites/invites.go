@@ -5,41 +5,6 @@ package invites
 // permissions
 // description
 
-// metrics API
-// data to collect
-// behavior e.g add metric
-
-// users
-// nickname / username; patient can edit but we track
-// ? explore twitter like username / handle + visible name, the latter can be edited
-// names...? overlap with patients e.g if a patient is invited, can we prefill most of these
-// type e.g HCW, client, admin etc
-// user invite via email, SMS etc
-// ? do we need admin role or we just work with roles and perms
-// roles -> permissions
-// add new user e.g super admin adding a HCW
-// optional: staff number
-// optional: link to facility(ies), for HCW
-// email contacts
-// phone contacts
-// gender
-// names...align | first, middle, other
-// listing users
-// search for users
-// add role
-// remove role
-// could some users also require second factors e.g biometric or OTP?
-// some users have expiring PINs e.g professionals
-// user preferences i.e preferred languages, opt-ins, promotional messages etc
-// fetch profile
-// update profile
-// inactivate profile
-// delete profile | forget me
-// suspend profile
-// reactivate profile
-// request data export for GDPR; ?automate
-// hashing / masking of UIDs for anonymization e.g for data analysis
-
 // terms and conditions (served from API)
 
 // defer: list of important articles to show during onboarding
@@ -59,28 +24,6 @@ package invites
 // question has: stem, description, response type e.g text
 // ? what is the overlap between this and questionnaires?
 // metrics: e.g measure popularity of questions
-
-// get client from OpenMRS
-// register client
-// main identifier is CCC number (composite of MFL code and client code)
-// other identifiers possible e.g phone number
-// 3 names
-// date of birth
-// gender
-// optional ID
-// date of treatment enrollment (or estimate)
-// calculate: length of treatment
-// most important contacts: phone
-// physical address
-// county
-// facility / clinic
-// treatment buddy (optional)
-// next of kin and relationship
-// action: invite to client app
-// action: add to group(s)
-// search for a patient...search criteria
-// inactivating and reactivating a client
-// ? transfer out of our care ?
 
 // questionnaires
 // questions
