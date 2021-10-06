@@ -38,6 +38,7 @@ package invites
 // suspend profile
 // reactivate profile
 // request data export for GDPR; ?automate
+// hashing / masking of UIDs for anonymization e.g for data analysis
 
 // terms and conditions (served from API)
 
