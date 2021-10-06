@@ -36,7 +36,8 @@ func (f FilterParam) Validate() error {
 
 // TODO Read items per page from settings
 
-type FacilityUseCases interface {
+type IFacilityList interface {
+	// TODO Document: callers should specify active
 	List(
 		// search
 		searchTerm *string,
@@ -47,7 +48,43 @@ type FacilityUseCases interface {
 		// paginate
 		page int,
 	) (*FacilityPage, error)
+}
 
+type IFacilityRetrieve interface {
+	Retrieve(id string) (*Facility, error)
+}
+
+type IFacilityCreate interface {
 	// TODO Ensure blank ID when creating
+	// TODO Since `id` is optional, ensure pre-condition check
 	Create(facility Facility) (*Facility, error)
+}
+
+type IFacilityUpdate interface {
+	// TODO Pre-condition: ensure `id` is set and valid
+	Update(facility Facility) (*Facility, error)
+}
+
+type IFacilityDelete interface {
+	// TODO Ensure delete is idempotent
+	Delete(id string) (bool, error)
+}
+
+type IFacilityInactivate interface {
+	// TODO Toggle active boolean
+	Inactivate(id string) (*Facility, error)
+}
+
+type IFacilityReactivate interface {
+	Reactivate(id string) (*Facility, error)
+}
+
+type FacilityUseCases interface {
+	IFacilityList
+	IFacilityRetrieve
+	IFacilityCreate
+	IFacilityUpdate
+	IFacilityDelete
+	IFacilityInactivate
+	IFacilityReactivate
 }
