@@ -4,6 +4,7 @@ package invites
 
 // get client from OpenMRS
 // register client
+// client type e.g PMTCT, OVC
 // main identifier is CCC number (composite of MFL code and client code)
 // other identifiers possible e.g phone number
 // 3 names
@@ -11,7 +12,7 @@ package invites
 // gender
 // optional ID
 // date of treatment enrollment (or estimate)
-// calculate: length of treatment
+// calculate: **length of treatment**
 // most important contacts: phone
 // physical address
 // county

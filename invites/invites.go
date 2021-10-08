@@ -1,64 +1,30 @@
 package invites
 
-// roles
-// name
-// permissions
-// description
+// TODO Invite process: a use case that **orchestrates**
 
-// terms and conditions (served from API)
-
-// defer: list of important articles to show during onboarding
-
-// group
-// identity
-// name
-// can be listed
-// topic
-// type
-// ...more shall be defined
-
-// security questions
-// randomized into sets of 3
-// save both question and response
-// verify security question response by user
-// question has: stem, description, response type e.g text
-// ? what is the overlap between this and questionnaires?
-// metrics: e.g measure popularity of questions
-
-// questionnaires
-// questions
-// types
-
+// TODO Gap: end to end invite process
 // healthcare worker invites client
 // consent - accept terms and conditions
 // consent - HCW indicate they have counselled the patient
-// contacts
-// opt in - by channel
-// language(s)
-// client type e.g PMTCT, OVC
-// generate and send invite link
-// invite code
-// ? can the invite code also be rendered as a QR code
 // first time PIN, to be changed after first use
 // PIN hashing
 // link an invite to a phone number and CCC number
 // invite link is a deep link
 // send SMS after invite
-// re-send invite link
 // security questions
 // accept invite
 // ? should the invite expire
 // welcome survey / questionnaire
+// list of important articles to show during onboarding
 // make sure push tokens are registered after sign up
+// select onboarding questionnaire by length of treatment
 
-// verify PIN
-// PIN hashing
-// max of n attempts
-// exponential backoff
-// lockout after 30 min (suspend)
-// metrics: record number of attempts
+// generate and send invite link
+// invite code
+// ? can the invite code also be rendered as a QR code
+// send and resend...different channel for resend
 
-// reset PIN
+// TODO Gap: end to end forgot PIN
 // OTP
 // re-send OTPs...different channel
 // secret questions

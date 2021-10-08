@@ -137,6 +137,7 @@ type ILogin interface {
 	//	the base (for the exponential backoff calculation) is a setting (env + default)
 	//	default this base to 4...but override to 3 for a start in env
 	// TODO: Only users who have accepted terms can login
+	// TODO: Update metrics e.g login count, failed login count, successful login count etc
 	Login(userID string, pin string, flavour string) (*AuthCredentials, string, error)
 }
 
