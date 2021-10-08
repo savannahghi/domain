@@ -114,6 +114,11 @@ type ISetUserPIN interface {
 	SetUserPIN(userID string, pin string, confirm string, flavour string) (bool, error)
 }
 
+// IVerifyPIN is used e.g to check the PIN when accessing sensitive content
+type IVerifyPIN interface {
+	VerifyPIN(userID string, flavour string, pin string) (bool, error)
+}
+
 type ILogin interface {
 	// ...
 	// when successful: return the user object
