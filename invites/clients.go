@@ -1,6 +1,6 @@
 package invites
 
-// TODO MPI: Patient Unique ID
+// TODO MPI: Client Unique ID
 
 // get client from OpenMRS
 // register client

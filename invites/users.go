@@ -1,19 +1,5 @@
 package invites
 
-type Contact struct {
-	ID string
-
-	Type string // TODO enum
-
-	Contact string // TODO Validate: phones are E164, emails are valid
-
-	Active bool
-
-	// a user may opt not to be contacted via this contact
-	// e.g if it's a shared phone owned by a teenager
-	OptedIn bool
-}
-
 type User struct {
 	ID *string // globally unique ID
 
@@ -23,7 +9,7 @@ type User struct {
 
 	// TODO Consider making the names optional in DB; validation in frontends
 	FirstName  string // given name
-	MiddleName string
+	MiddleName *string
 	LastName   string
 
 	UserType string // TODO enum; e.g client, health care worker
@@ -32,29 +18,9 @@ type User struct {
 
 	Active bool
 
-	Contacts  []*Contact // TODO: validate, ensure
+	Contacts []*Contact // TODO: validate, ensure
+
 	PushToken string
-}
-
-type PatientProfile struct {
-	ID *string
-
-	UserID string // foreign key to user
-}
-
-type StaffProfile struct {
-	ID *string
-
-	UserID string // foreign key to user
-
-	StaffNumber string
-
-	Facilities []*Facility
-
-	// there is nothing special about super-admin; just the set of roles they have
-	Roles []string // TODO: roles are an enum (controlled list), known to both FE and BE
-
-	// TODO PIN Expiry
 }
 
 type IUserInvite interface {
@@ -90,54 +56,15 @@ type IRequestDataExport interface {
 	RequestDataExport(userID string, pin string) (bool, error)
 }
 
-type IAddStaffUser interface {
-
-	// TODO: transactional i.e create both OR none
-	AddStaffUser(user User, profile StaffProfile) (*User, *StaffProfile, error)
-}
-
-type IAddRoles interface {
-	AddRoles(userID string, roles []string) (bool, error)
-}
-
-type IRemoveRole interface {
-	RemoveRole(userID string, role string) (bool, error)
-}
-
-type IInactivateProfile interface {
-	// TODO profileType is an enum
-	InactivateProfile(userID string, profileType string) (bool, error)
-}
-
-type IReactivateProfile interface {
-	// TODO profileType is an enum
-	ReactivateProfile(userID string, profileType string) (bool, error)
-}
-
 type UserUseCases interface {
 	IUserInvite
 	IUserForget
 	IRequestDataExport
 }
 
-type PatientProfileUsecases interface {
-	IInactivateProfile
-	IReactivateProfile
-}
-
-type StaffProfileUsecases interface {
-	IAddRoles
-	IRemoveRole
-	IInactivateProfile
-	IReactivateProfile
-}
-
-// listing users
+// TODO: CRUD for users...including search
 // search for users
 
 // some users have expiring PINs e.g professionals
 // user preferences i.e preferred languages, opt-ins, promotional messages etc
-
-// fetch profile
-// update profile
 // hashing / masking of UIDs for anonymization e.g for data analysis
