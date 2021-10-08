@@ -32,7 +32,8 @@ type User struct {
 
 	Active bool
 
-	Contacts []*Contact // TODO: validate, ensure
+	Contacts  []*Contact // TODO: validate, ensure
+	PushToken string
 }
 
 type PatientProfile struct {
