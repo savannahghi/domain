@@ -12,7 +12,8 @@ type ClientProfile struct {
 	// all other identifiers they have will be on the client record
 	ClientID string
 
-	// TODO More needed here
+	// for the preferred language list, order matters
+	Languages []string // TODO: turn this into a slice of enums, start small (en, sw)
 }
 
 type StaffProfile struct {
@@ -26,18 +27,16 @@ type StaffProfile struct {
 
 	// there is nothing special about super-admin; just the set of roles they have
 	Roles []string // TODO: roles are an enum (controlled list), known to both FE and BE
-
-	// TODO PIN Expiry
 }
 
 type IInactivateProfile interface {
-	// TODO profileType is an enum
-	InactivateProfile(userID string, profileType string) (bool, error)
+	// TODO flavour is an enum e.g CLIENT, PRO
+	InactivateProfile(userID string, flavour string) (bool, error)
 }
 
 type IReactivateProfile interface {
-	// TODO profileType is an enum
-	ReactivateProfile(userID string, profileType string) (bool, error)
+	// TODO flavour is an enum e.g CLIENT, PRO
+	ReactivateProfile(userID string, flavour string) (bool, error)
 }
 
 type IAddStaffUser interface {
@@ -53,6 +52,10 @@ type IRemoveRole interface {
 	RemoveRole(userID string, role string) (bool, error)
 }
 
+type IUpdateLanguagePreferences interface {
+	UpdateLanguagePreferences(userID string, language string) (bool, error)
+}
+
 type ClientProfileUsecases interface {
 	IInactivateProfile
 	IReactivateProfile
@@ -64,6 +67,7 @@ type StaffProfileUsecases interface {
 	IRemoveRole
 	IInactivateProfile
 	IReactivateProfile
+	IUpdateLanguagePreferences
 }
 
 // TODO: CRUD for ClientProfile
