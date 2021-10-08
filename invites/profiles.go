@@ -14,6 +14,8 @@ type ClientProfile struct {
 
 	// for the preferred language list, order matters
 	Languages []string // TODO: turn this into a slice of enums, start small (en, sw)
+
+	Addresses []*Address
 }
 
 type StaffProfile struct {
@@ -27,6 +29,8 @@ type StaffProfile struct {
 
 	// there is nothing special about super-admin; just the set of roles they have
 	Roles []string // TODO: roles are an enum (controlled list), known to both FE and BE
+
+	Addresses []*Address
 }
 
 type IInactivateProfile interface {

@@ -21,26 +21,23 @@ type Identifier struct {
 
 // TODO: Behavior; validate identifier
 
-type BioData struct {
-	FirstName   string
-	MiddleName  *string
-	LastName    *string
-	DateOfBirth *time.Time
-	Gender      string // TODO: enum
-}
-
 // Client is a linkage model e.g to tie together all of a person's identifiers
 // and their health record ID
 type Client struct {
 	ID string // globally unique identifier; synthetic i.e has no encoded meaning
 
+	// every client is a user first
+	// biodata is linked to the user record
+	// the client record is for bridging to other identifiers e.g patient record IDs
+	UserID string // TODO: Foreign key to User
+
+	EnrollmentDate *time.Time // use for date of treatment enrollment
+
 	ClientType string // TODO: enum; e.g PMTCT, OVC
 
 	Active bool
 
-	EnrollmentDate *time.Time // use for date of treatment enrollment
-
-	Address string
+	HealthRecordID *string // optional link to a health record e.g FHIR Patient ID
 
 	// TODO: a client can have many identifiers; an identifier belongs to a client
 	// reverse relation
@@ -54,21 +51,22 @@ type Client struct {
 // TODO: Behavior; list a client's idenfiers, optional filter for status
 // TODO: Behavior; Modify (e.g retire/inactivate) a client's identifier
 // TODO: Behavior; search | should search across identifiers & human readable fields e.g name
-// TODO: Inactivate/reactivate client
+//	for search filters: include facility
+// TODO: Inactivate/reactivate client...? reason for inactivate e.g transfer out?
+// TODO: Transfer client from facility to facility
+// TODO: Health Record ID e.g FHIR Patient ID
+// TODO: Behavior; calculate length of treatment
+// TODO: Behavior; add treatment buddy (other user)
+// TODO: Behavior; remove treatment buddy
+// TODO: Consider address struct
+// TODO: Should this be independent or part of the profile?
+// TODO: log in (Pro) to a facility?
+// TODO: next of kin / related person
+// TODO: client facility...at any time the client has one facility
 // TODO: Client CRUD
 //	list only active clients OR provide filter facility
-// TODO: Behavior; calculate length of treatment
+// TODO: treatment buddy (optional)...another user
+// TODO: next of kin and relationship...next of kin struct...related person
 
 type ClientUseCases interface {
 }
-
-// most important contacts: phone
-// county
-// facility / clinic
-// treatment buddy (optional)
-// next of kin and relationship
-// action: invite to client app
-// action: add to group(s)
-// search for a patient...search criteria
-// inactivating and reactivating a client
-// ? transfer out of our care ?
