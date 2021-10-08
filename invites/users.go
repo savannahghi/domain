@@ -22,6 +22,9 @@ type User struct {
 
 	Contacts []*Contact // TODO: validate, ensure
 
+	// for the preferred language list, order matters
+	Languages []string // TODO: turn this into a slice of enums, start small (en, sw)
+
 	PushTokens []string
 
 	// when a user logs in successfully, set this
@@ -161,6 +164,10 @@ type IRemovePushtoken interface {
 	RemovePushToken(userID string, flavour string) (bool, error)
 }
 
+type IUpdateLanguagePreferences interface {
+	UpdateLanguagePreferences(userID string, language string) (bool, error)
+}
+
 type UserUseCases interface {
 	IUserInvite
 	IUserForget
@@ -171,6 +178,7 @@ type UserUseCases interface {
 	IAnonymizedIdentifier
 	IAddPushToken
 	IRemovePushtoken
+	IUpdateLanguagePreferences
 }
 
 // TODO: CRUD for users...including search
