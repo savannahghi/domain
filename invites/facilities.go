@@ -22,11 +22,12 @@ type FacilityPage struct {
 
 type FilterParam struct {
 	Name     string
-	DataType string // TODO: Ideally a controlled list i.e enum
-	Data     string // TODO: Clear spec on validation e.g dates must be ISO 8601
+	DataType string // TODO: Ideally a controlled list i.e enum (MFL code, Active, County )
+	Value    string // TODO: Clear spec on validation e.g dates must be ISO 8601. This is the actual data being filtered
 }
 
 func (f FilterParam) Validate() error {
+	// Validate enums
 	// TODO: Very strict validation of data <-> data type
 	// 	     this is a good candidate for TDD with unit tests
 	// TODO: make sure this is always called before filter params are used
