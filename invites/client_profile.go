@@ -52,6 +52,8 @@ type ClientProfile struct {
 	TreatmentBuddyUserID string // TODO: optional, FK to User
 
 	CHVUserID string // TODO: optional, FK to User
+
+	ClientCounselled bool
 }
 
 type ClientProfileRegistrationPayload struct {
@@ -70,6 +72,8 @@ type ClientProfileRegistrationPayload struct {
 
 	TreatmentEnrollmentDate *time.Time
 
+	ClientCounselled bool
+
 	// TODO: when returning to UI, calculate length of treatment (return as days for ease of use in frontend)
 }
 
@@ -82,7 +86,9 @@ type IRegisterClient interface {
 	//		if identifers not supplied (e.g patient being created on app), set
 	//			an internal identifier as the default. It should be updated later
 	//			with the CCC number or other final identifier
-	// TODO: ensure the user exists
+	// TODO: ensure the user exists...supplied user ID
+	// TODO: only register clients who've been counselled
+	// TODO: consider: after successful registration, send invite link automatically
 	RegisterClient(user User, profile ClientProfileRegistrationPayload) (*ClientProfile, error)
 }
 
@@ -161,3 +167,5 @@ type ClientProfileUseCases interface {
 // TODO: Client profile CRUD
 //	client profile search...search across identifiers + human readable fields
 //	list filters to include facility
+//  fetch profile by user ID also...e.g to get profile after login
+//	inline into the profile a calculated field with treatment duration

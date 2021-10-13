@@ -16,7 +16,7 @@ type Metric struct {
 
 	// a user identifier, can be hashed for anonymity
 	// with a predictable one way hash
-	UID string
+	UserID string
 }
 
 type IMetricsCollect interface {

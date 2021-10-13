@@ -1,5 +1,7 @@
 package invites
 
+import "time"
+
 type SecurityQuestion struct {
 	ID           string
 	QuestionStem string
@@ -13,6 +15,7 @@ type SecurityQuestion struct {
 type SecurityQuestionResponse struct {
 	ID string
 
+	TimeStamp          time.Time
 	UserID             string // foreign key to question
 	SecurityQuestionID string // foreign key to question
 	Response           string // TODO: ensure we can encode/decode different response types

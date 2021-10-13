@@ -2,6 +2,9 @@ package invites
 
 import "time"
 
+// TODO: introduce into all tables a base model with created, updated, created by, updated by
+//	and logic to fill/update these
+
 // AuditLog is used to record all senstive changes
 //
 // e.g

@@ -75,7 +75,10 @@ type IUserInvite interface {
 	//    a first time PIN is set and sent to the user
 	//    this PIN must be changed on first use
 	//    this PIN can be used only once
+	//	  **encode** first use PIN and user ID into invite link
+	//	  i.e not a generic invite link
 	// TODO: generate first time PIN, must change, link to user
+	// TODO: set the PIN valid to to the current moment so that the user is forced to change upon login
 	// TODO determine communication channel for invite (e.g SMS) from settings
 	Invite(userID string, flavour string) (bool, error)
 }
@@ -103,15 +106,32 @@ type IRequestDataExport interface {
 type ISetUserPIN interface {
 	// SetUserPIN sets a user's PIN.
 	// It can be used to set a PIN for the first time.
+	// It can be used to change the PIN.
 	// It can also be used to change a PIN e.g on first login after invite or
 	// after expiry.
+	// TODO: auditable
 	// TODO: Consult CLIENT_PIN_VALIDITY_DAYS and PRO_PIN_VALIDITY DAYS env/setting to set expiry
 	// TODO: flavour is an enum...same enum used in profile e.g Client, Pro
 	// TODO: ensure that old PINs are not re-used
 	//	this presumes that we keep a record of **hashed** PINs per user
 	// TODO Each time a PIN is set, recalculate valid to / valid from and update the
 	//	cached IsActive value as appropriate i.e latest PIN active, others inactive
+	//
+	// PINs should not be re-used (compare hashed PINs)
+	// TODO: the user pin table has validity and each new PIN that is set should be a new
+	// entry in the table; and also invalidate past PINs.
+	// it means that the same table can be used to check for PIN reuse.
+	// TODO: all PINs are hashed
 	SetUserPIN(userID string, pin string, confirm string, flavour string) (bool, error)
+}
+
+type ResetPIN interface {
+	// ResetPIN can be used by admins or healthcare workers to generate and send
+	// a new PIN for a client or other user.
+	// The new PIN is generated automatically and set to expire immediately so
+	// that a PIN change is forced on next login.
+	// TODO: Notify user after PIN reset
+	ResetPIN(userID string, flavour string) (bool, error)
 }
 
 // IVerifyPIN is used e.g to check the PIN when accessing sensitive content
@@ -187,4 +207,5 @@ type UserUseCases interface {
 }
 
 // TODO: CRUD for users...including search
+// TODO: do not implement create user...if abused, we'd end up with a situation where there is a user but no profile
 // search for users

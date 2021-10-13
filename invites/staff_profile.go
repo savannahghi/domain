@@ -19,12 +19,12 @@ type StaffProfile struct {
 	Addresses []*Address
 }
 
-type IAddStaffUser interface {
+type IRegisterStaffUser interface {
 	// TODO: ensure default facility is set
 	//		validation: ensure the staff profile has at least one facility
 	//		ensure that the default facility is one of these
-	// TODO: ensure the user exists
-	AddStaffUser(user User, profile StaffProfile) (*User, *StaffProfile, error)
+	// TODO: ensure the user exists...userID in profile
+	RegisterStaffUser(user User, profile StaffProfile) (*User, *StaffProfile, error)
 }
 
 type IAddRoles interface {
