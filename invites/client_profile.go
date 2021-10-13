@@ -45,20 +45,42 @@ type ClientProfile struct {
 	Addresses []*Address
 }
 
-// TODO: Behavior; add/register client profile
-//		validate identifiers when creating
-// 		registration payload should be front-end friendly **
-// TODO: Inactivate/reactivate client...? reason for inactivate e.g transfer out?
-// TODO: Transfer client from facility to facility
-// TODO: Behavior; calculate length of treatment
-// TODO: Behavior; add treatment buddy (other user)
-// TODO: Behavior; remove treatment buddy
-// TODO: log in (Pro) to a facility?
+type ClientProfileRegistrationPayload struct {
+	// every client is a user first
+	// biodata is linked to the user record
+	// the client record is for bridging to other identifiers e.g patient record IDs
+	UserID string // TODO: Foreign key to User
+
+	ClientType string // TODO: enum; e.g PMTCT, OVC
+
+	PrimaryIdentifier *Identifier // TODO: optional, default set if not givemn
+
+	Addresses []*Address
+}
+
+// TODO: 2. Inactivate/reactivate client...? reason for inactivate e.g transfer out?
+// TODO: 3. Transfer client from facility to facility
+// TODO: 4. Behavior; calculate length of treatment
+// TODO: 5. Behavior; add treatment buddy (other user) / assigned CHV
+// TODO: 6. Behavior; remove treatment buddy / assigned CHV
+// TODO: 7. log in (Pro) to a facility?
 // TODO: next of kin / related person
-// TODO: client facility...at any time the client has one facility
+// TODO: 8. client facility...at any time the client has one facility
 //	list only active clients OR provide filter facility
 // TODO: treatment buddy (optional)...another user
-// TODO: next of kin and relationship...next of kin struct...related person
+// TODO: 9. next of kin and relationship...next of kin struct...related person
+
+type IRegisterClient interface {
+	// TODO: the input client profile must not have an ID set
+	//		validate identifiers when creating
+	//		if the enrollemnt date is not supplied, set it automatically
+	//		default to the client profile being active right after creation
+	//		create a patient on FHIR (HealthRecordID
+	//		if identifers not supplied (e.g patient being created on app), set
+	//			an internal identifier as the default. It should be updated later
+	//			with the CCC number or other final identifier
+	RegisterClient(client *ClientProfileRegistrationPayload) (*ClientProfile, error)
+}
 
 type IAddClientIdentifier interface {
 	// TODO idType is an enum
@@ -78,6 +100,7 @@ type ClientProfileUseCases interface {
 	IAddClientIdentifier
 	IGetClientIdentifiers
 	IInactivateClientIdentifier
+	IRegisterClient
 }
 
 // TODO: Client profile CRUD

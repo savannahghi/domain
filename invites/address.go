@@ -10,5 +10,3 @@ type Address struct {
 	County     string // TODO: counties belong to a country
 	Active     bool
 }
-
-// TODO: CRUD for this
