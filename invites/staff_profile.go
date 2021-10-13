@@ -41,7 +41,7 @@ type IUpdateDefaultFacility interface {
 }
 
 type StaffProfileUsecases interface {
-	IAddStaffUser
+	IRegisterStaffUser
 	IAddRoles
 	IRemoveRole
 	IUpdateLanguagePreferences
