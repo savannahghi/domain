@@ -209,3 +209,4 @@ type UserUseCases interface {
 // TODO: CRUD for users...including search
 // TODO: do not implement create user...if abused, we'd end up with a situation where there is a user but no profile
 // search for users
+// filtering user lists: e.g by criteria such as age (needed e.g to find survey cohorts)
