@@ -30,7 +30,7 @@ type ClientProfile struct {
 	// the client record is for bridging to other identifiers e.g patient record IDs
 	UserID string // TODO: Foreign key to User
 
-	EnrollmentDate *time.Time // use for date of treatment enrollment
+	TreatmentEnrollmentDate *time.Time // use for date of treatment enrollment
 
 	ClientType string // TODO: enum; e.g PMTCT, OVC
 
@@ -43,6 +43,15 @@ type ClientProfile struct {
 	Identifiers []*Identifier
 
 	Addresses []*Address
+
+	RelatedPersons []*RelatedPerson // e.g next of kin
+
+	// client's currently assigned facility
+	FacilityID string // TODO: FK
+
+	TreatmentBuddyUserID string // TODO: optional, FK to User
+
+	CHVUserID string // TODO: optional, FK to User
 }
 
 type ClientProfileRegistrationPayload struct {
@@ -56,19 +65,13 @@ type ClientProfileRegistrationPayload struct {
 	PrimaryIdentifier *Identifier // TODO: optional, default set if not givemn
 
 	Addresses []*Address
-}
 
-// TODO: 2. Inactivate/reactivate client...? reason for inactivate e.g transfer out?
-// TODO: 3. Transfer client from facility to facility
-// TODO: 4. Behavior; calculate length of treatment
-// TODO: 5. Behavior; add treatment buddy (other user) / assigned CHV
-// TODO: 6. Behavior; remove treatment buddy / assigned CHV
-// TODO: 7. log in (Pro) to a facility?
-// TODO: next of kin / related person
-// TODO: 8. client facility...at any time the client has one facility
-//	list only active clients OR provide filter facility
-// TODO: treatment buddy (optional)...another user
-// TODO: 9. next of kin and relationship...next of kin struct...related person
+	FacilityID string
+
+	TreatmentEnrollmentDate *time.Time
+
+	// TODO: when returning to UI, calculate length of treatment (return as days for ease of use in frontend)
+}
 
 type IRegisterClient interface {
 	// TODO: the input client profile must not have an ID set
@@ -79,13 +82,34 @@ type IRegisterClient interface {
 	//		if identifers not supplied (e.g patient being created on app), set
 	//			an internal identifier as the default. It should be updated later
 	//			with the CCC number or other final identifier
-	RegisterClient(client *ClientProfileRegistrationPayload) (*ClientProfile, error)
+	// TODO: ensure the user exists
+	RegisterClient(user User, profile ClientProfileRegistrationPayload) (*ClientProfile, error)
 }
 
 type IAddClientIdentifier interface {
 	// TODO idType is an enum
 	// TODO use idType and settings to decide if it's a primary identifier or not
-	AddIdentifier(clientID string, idType string, idValue string) (*Identifier, error)
+	AddIdentifier(clientID string, idType string, idValue string, isPrimary bool) (*Identifier, error)
+}
+
+type IInactivateClient interface {
+	// TODO Consider making reasons an enum
+	InactivateClient(clientID string, reason string, notes string) (bool, error)
+}
+
+type IReactivateClient interface {
+	ReactivateClient(clientID string, reason string, notes string) (bool, error)
+}
+
+type ITransferClient interface {
+	// TODO: maintain log of past transfers, who did it etc
+	TransferClient(
+		clientID string,
+		OriginFacilityID string,
+		DestinationFacilityID string,
+		Reason string, // TODO: consider making this an enum
+		Notes string, // optional notes...e.g if the reason given is "Other"
+	) (bool, error)
 }
 
 type IGetClientIdentifiers interface {
@@ -93,7 +117,32 @@ type IGetClientIdentifiers interface {
 }
 
 type IInactivateClientIdentifier interface {
-	InactivateIdentifier(identifierID string) (bool, error)
+	InactivateIdentifier(clientID string, identifierID string) (bool, error)
+}
+
+type IAssignTreatmentSupporter interface {
+	AssignTreatmentSupporter(
+		clientID string,
+		treatmentSupporterID string,
+		treatmentSupporterType string, // TODO: enum, start with CHV and Treatment buddy
+	) (bool, error)
+}
+
+type IUnassignTreatmentSupporter interface {
+	UnassignTreatmentSupporter(
+		clientID string,
+		treatmentSupporterID string,
+		reason string, // TODO: ensure these are in an audit log
+		notes string, // TODO: Optional
+	) (bool, error)
+}
+
+type IAddRelatedPerson interface {
+	// add next of kin
+	AddRelatedPerson(
+		clientID string,
+		relatedPerson *RelatedPerson,
+	) (*RelatedPerson, bool)
 }
 
 type ClientProfileUseCases interface {
@@ -101,6 +150,12 @@ type ClientProfileUseCases interface {
 	IGetClientIdentifiers
 	IInactivateClientIdentifier
 	IRegisterClient
+	IInactivateClient
+	IReactivateClient
+	ITransferClient
+	IAssignTreatmentSupporter
+	IUnassignTreatmentSupporter
+	IAddRelatedPerson
 }
 
 // TODO: Client profile CRUD

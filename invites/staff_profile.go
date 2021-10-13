@@ -7,7 +7,11 @@ type StaffProfile struct {
 
 	StaffNumber string
 
-	Facilities []*Facility
+	Facilities []*Facility // TODO: needs at least one
+
+	// A UI switcher optionally toggles the default
+	// TODO: the list of facilities to switch between is strictly those that the user is assigned to
+	DefaultFacilityID string // TODO: required, FK to facility
 
 	// there is nothing special about super-admin; just the set of roles they have
 	Roles []string // TODO: roles are an enum (controlled list), known to both FE and BE
@@ -16,7 +20,10 @@ type StaffProfile struct {
 }
 
 type IAddStaffUser interface {
-	// TODO: transactional i.e create both OR none
+	// TODO: ensure default facility is set
+	//		validation: ensure the staff profile has at least one facility
+	//		ensure that the default facility is one of these
+	// TODO: ensure the user exists
 	AddStaffUser(user User, profile StaffProfile) (*User, *StaffProfile, error)
 }
 
@@ -28,11 +35,17 @@ type IRemoveRole interface {
 	RemoveRole(userID string, role string) (bool, error)
 }
 
+type IUpdateDefaultFacility interface {
+	// TODO: the list of facilities to switch between is strictly those that the user is assigned to
+	UpdateDefaultFacility(userID string, facilityID string) (bool, error)
+}
+
 type StaffProfileUsecases interface {
 	IAddStaffUser
 	IAddRoles
 	IRemoveRole
 	IUpdateLanguagePreferences
+	IUpdateDefaultFacility
 }
 
 // TODO: CRUD for StaffProfile
