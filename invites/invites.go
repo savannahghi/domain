@@ -1,37 +1,23 @@
 package invites
 
-// TODO Invite process: a use case that **orchestrates**
-
 // TODO Gap: end to end invite process
-// healthcare worker invites client
-// consent - accept terms and conditions
-// consent - HCW indicate they have counselled the patient
-// first time PIN, to be changed after first use
-// PIN hashing
-// link an invite to a phone number and CCC number
-// invite link is a deep link
-// send SMS after invite
-// security questions
-// accept invite
-// ? should the invite expire
-// welcome survey / questionnaire
-// list of important articles to show during onboarding
-// make sure push tokens are registered after sign up
-// select onboarding questionnaire by length of treatment
 
-// generate and send invite link
-// invite code
-// ? can the invite code also be rendered as a QR code
-// send and resend...different channel for resend
-
-// TODO Gap: end to end forgot PIN
-// OTP
-// re-send OTPs...different channel
-// secret questions
-// set new PIN
-// ? can this be done by HCWs
-// ? notify after reset PIN
-// metrics: record resets
-// anticipate additional rules e.g max resets, PIN reuse etc
-// PIN hashing
-// if HCW sets PIN, it must be changed
+// 1. Review: invite client by healthcare worker
+// 2. Review: indicate that patient is counselled when HCW is inviting
+// 3. Review: accept terms and conditions
+// 4. Review: ensure that we can force a PIN change e.g for first time PIN
+// 5. Review: PIN change API
+// 6. Review: PIN hashing
+// 7. Review: invite links: deep, tied to user details, client CCC, sent via SMS, expire
+// 8. Review: send SMS API
+// 9. Review: accept/reject invite
+// 10. Review: set/update security questions
+// 11. Review: verify security questions
+// 12. Review: push token registration
+// 13. Review: ability to choose onboarding questionnaire by length of treatment
+// 14. Review: re-send invites (?invalidate first invite)
+// 15. Review: send and resend OTP (different channel for resends)
+// 16. Review: reset PIN, notify after PIN reset (both client reset and HCW reset)
+// 17. Review: collecting metrics for key actions
+// 18. Review: if a PIN is set by HCW or invite, it must be changed at next login
+// 19. Review: ability to hook in additional rules on PIN reset e.g max resets
