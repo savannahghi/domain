@@ -52,6 +52,7 @@ type IVerifySecurityQuestionResponses interface {
 type SecurityQuestionUseCases interface {
 	IGetSecurityQuestions
 	IRecordSecurityQuestionResponses
+	IVerifySecurityQuestionResponses
 }
 
 // TODO CRUD for questions, including inactivate/reactivate
