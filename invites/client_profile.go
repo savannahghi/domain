@@ -49,7 +49,7 @@ type ClientProfile struct {
 	// client's currently assigned facility
 	FacilityID string // TODO: FK
 
-	TreatmentBuddyUserID string // TODO: optional, FK to User
+	TreatmentBuddy string // TODO: optional, free text OR FK to user?
 
 	CHVUserID string // TODO: optional, FK to User
 
