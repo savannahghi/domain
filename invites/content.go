@@ -31,6 +31,8 @@ type Content struct {
 	UpdatedAt time.Time
 	Active    bool
 
+	IsNew bool // TODO: Marks content as new. This can be a calculated and cached field
+
 	// e.g estimated time to read an article or video/audio length
 	Estimate int // TODO: standardize unit e.g seconds
 
