@@ -1,0 +1,100 @@
+# ================ENUMS================
+enum Flavour {
+	PRO
+	CONSUMER
+}
+
+enum UserType {
+	CLIENT
+	HEALTHCAREWORKER
+}
+
+enum Gender {
+	MALE
+	FEMALE
+	OTHER
+}
+
+enum ContactType {
+	PRIMARY
+	SECONDARY
+    OFFICIAL
+}
+
+
+# ================TYPES================
+type Contact {
+	contactType: ContactType!
+	contact: String!
+	active: Boolean!
+	optedIn: Boolean!
+}
+
+type User {
+    userName: String
+    displayName: String
+    firstName: String
+    middleName: String
+    lastName: String
+    userType: UserType
+    gender: Gender
+    active: Boolean
+    contacts: [Contact]
+    languages: [String]
+    termsAccepted: Boolean
+}
+
+type AuthCredentials  {
+	refreshToken: String!
+	idToken: String!
+	expiresIn: String!
+	user: User!
+}
+
+type Terms  {
+	text: String! 
+	flavour: Flavour! 
+}
+
+type LoginResponse  {
+	credentials: AuthCredentials!
+	code: String! 
+	message: String 
+}
+
+type SecurityQuestion {
+	questionStem: String!
+	description: String
+	flavour: Flavour!
+	active: Boolean!
+}
+
+type SecurityQuestionResponse {
+	userID: String!
+	securityQuestionID: String!
+	response: String!
+}
+
+# ================INPUTS================
+input SecurityQuestionResponseInput {
+	userID: String!
+	securityQuestionID: String!
+	response: String!
+}
+
+# ================QUERIES================
+type Query  {
+	login(phoneNumber: String!, pin: String!, flavour: Flavour!): LoginResponse! @lambda 
+	setUserPIN(userID: String!, pin: String!, confirmPin: String!, flavour: Flavour!): Boolean! @lambda
+	verifyPIN(userID: String!, pin: String!, confirmPin: String!, flavour: Flavour!): Boolean! @lambda
+	getSecurityQuestions(flavour: Flavour!): [SecurityQuestion]! @lambda
+	sendOTP(userID: String!, flavour: Flavour!): String! @lambda
+	resendOTP(userID: String!, flavour: Flavour!): String! @lambda
+}
+
+# ================MUTATIONS================
+type Mutation  {
+	reviewTerms(userID: String!, accepted: Boolean!, flavour: Flavour!): Boolean! @lambda 
+	listTerms(flavour: Flavour!): Terms! @lambda
+	recordSecurityQuestionResponses(input: [SecurityQuestionResponseInput!]!): Boolean! @lambda
+}
