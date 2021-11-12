@@ -4,13 +4,13 @@ async function login({ graphql }) {
     return {
         "credentials": {
             "authCredentials": {
-
                 "idToken": "some id token",
                 "refreshToken": "some refresh token",
                 "expiresIn": "3600",
             },
             "clientProfile": {
                 "user": {
+                    "userID": "some-user-id",
                     "userName": "Kowalski",
                     "displayName": "Kowalski",
                     "firstName": "Juha",
@@ -47,6 +47,7 @@ async function login({ graphql }) {
                 "facilityID": "some-facility-id",
                 "clientCounselled": true
             },
+            "pinChangeRequired": true
         },
         "code": "0",
         "message": "success",
@@ -71,12 +72,14 @@ async function getSecurityQuestions({ graphql }) {
             "description": "Please provide the last 4 digits of your clinic number",
             "flavour": "CONSUMER",
             "active": true,
+            "responseType": "NUMBER",
         },
         {
             "questionStem": "Which month did you start your treatment?",
             "description": "Enter the month you started your treatment",
             "flavour": "CONSUMER",
             "active": true,
+            "responseType": "DATE",
         },
     ]
 }

@@ -61,6 +61,7 @@ type Contact {
 }
 
 type User {
+	userID: String!
     userName: String!
     displayName: String!
     firstName: String!
@@ -139,10 +140,9 @@ type SecurityQuestion {
 	responseType: SecurityQuestionResponseType!
 }
 
-# TODO: This should return an informative error message for each security question
 type SecurityQuestionResponse {
 	securityQuestionID: String!
-	message: String
+	isCorrect: Boolean!
 }
 
 type VerifyOTPResponse {
@@ -183,7 +183,7 @@ type Query  {
 	# Onboarding apis
 	login(phoneNumber: String!, pin: String!, flavour: Flavour!): LoginResponse! @lambda 
 	setUserPIN(userID: String!, pin: String!, confirmPin: String!, flavour: Flavour!): Boolean! @lambda
-	verifyPIN(userID: String!, pin: String!, confirmPin: String!, flavour: Flavour!): Boolean! @lambda
+	verifyPIN(userID: String!, pin: String!, flavour: Flavour!): Boolean! @lambda
 	sendOTP(userID: String!, phoneNumber: String!, flavour: Flavour!): Boolean! @lambda
 	resendOTP(userID: String!, phoneNumber: String!, flavour: Flavour!): Boolean! @lambda
 	verifyOTP(userID: String!, otp: String!, flavour: Flavour!): VerifyOTPResponse! @lambda
@@ -202,8 +202,7 @@ type Query  {
 # ================MUTATIONS================
 type Mutation  {
 	acceptTerms(userID: String!, termsID: String!): Boolean! @lambda 
-	recordSecurityQuestionResponses(input: [SecurityQuestionResponseInput!]!): Boolean! @lambda
-	
+	recordSecurityQuestionResponses(input: [SecurityQuestionResponseInput!]!): [SecurityQuestionResponse!]! @lambda
 	likeContentItem(userID: String!, contentID:String!): Boolean! @lambda
 	shareContentItem(userID: String!, contentID:String!): Boolean! @lambda
 	pinContentItem(userID: String!, contentID:String!): Boolean! @lambda

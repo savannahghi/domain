@@ -24,6 +24,7 @@ query login($phoneNumber: String!, $pin: String!, $flavour: Flavour!) {
         clientType
         facilityID
         user {
+          userID
           active
           displayName
           firstName
@@ -42,6 +43,7 @@ query login($phoneNumber: String!, $pin: String!, $flavour: Flavour!) {
           }
         }
       }
+      pinChangeRequired
     }
   }
 }
