@@ -65,6 +65,17 @@ query setUserPIN($pin: String!, $confirmPin: String!, $flavour: Flavour!, $userI
   "flavour": "CONSUMER"
 }
 
+query verifyPIN($confirmPin: String!, $flavour: Flavour!, $pin: String!, $userID: String!) {
+  verifyPIN(confirmPin: $confirmPin, flavour: $flavour, pin: $pin, userID: $userID)
+}
+
+{
+  "pin": "0000",
+  "confirmPin": "0000",
+  "userID": "some-user-id",
+  "flavour": "CONSUMER"
+}
+
 query fetchContent($limit: Int!, $tags: [String!]! ) {
   fetchContent(limit: $limit, tags: $tags) {
     authorAvatar
