@@ -3,9 +3,12 @@
 async function login({ graphql }) {
     return {
         "credentials": {
-            "idToken": "some id token",
-            "refreshToken": "some refresh token",
-            "expiresIn": "3600",
+            "authCredentials": {
+
+                "idToken": "some id token",
+                "refreshToken": "some refresh token",
+                "expiresIn": "3600",
+            },
             "user": {
                 "userName": "Kowalski",
                 "displayName": "Kowalski",
@@ -68,6 +71,24 @@ async function sendOTP({ graphql }) {
     return "111222"
 }
 
+
+async function verifyOTP() {
+    return {
+        "response": true,
+        "code": "4"
+    }
+}
+
+async function getHomeFeed() {
+    return {
+        "lastMoodRecordedDate": "2021-08-23T06:42:05.085216Z",
+        "newContent": [{
+
+        }],
+        "suggestedGroups": [{}]
+    }
+}
+
 self.addGraphQLResolvers({
     // Queries
     "Query.login": login,
@@ -76,7 +97,7 @@ self.addGraphQLResolvers({
     "Query.getSecurityQuestions": getSecurityQuestions,
     "Query.sendOTP": sendOTP,
     "Query.resendOTP": sendOTP,
-
+    "Query.verifyOTP": verifyOTP,
 
     /// Mutations
     "Mutation.setUserPIN": genericBoolResponse,

@@ -1,0 +1,39 @@
+query login($phoneNumber: String!, $pin: String!, $flavour: Flavour!) {
+  login(flavour: $flavour, phoneNumber: $phoneNumber, pin: $pin) {
+    code
+    message
+    credentials {
+      authCredentials {
+        expiresIn
+        idToken
+        refreshToken
+      }
+      user {
+        active
+        displayName
+        gender
+        firstName
+        languages
+        lastName
+        middleName
+        termsAccepted
+        userName
+        userType
+        contacts {
+          active
+          contact
+          contactType
+          optedIn
+        }
+      }
+    }
+  }
+}
+
+# Variables
+{
+  "phoneNumber": "+254717356476",
+  "pin": "0000",
+  "flavour": "CONSUMER"
+}
+

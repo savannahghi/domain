@@ -48,6 +48,10 @@ type AuthCredentials  {
 	refreshToken: String!
 	idToken: String!
 	expiresIn: String!
+}
+
+type AuthCredentialsResponse {
+	authCredentials: AuthCredentials!
 	user: User!
 }
 
@@ -57,7 +61,7 @@ type Terms  {
 }
 
 type LoginResponse  {
-	credentials: AuthCredentials!
+	credentials: AuthCredentialsResponse!
 	code: String! 
 	message: String 
 }
@@ -75,6 +79,22 @@ type SecurityQuestionResponse {
 	response: String!
 }
 
+
+type VerifyOTPResponse {
+	response: Boolean!
+	code: String
+}
+
+type Content {
+	
+}
+
+type HomeFeedResponse {
+	lastMoodRecordedDate: String!
+	newContent: [Content!]!
+	suggestedGroups: [Group!]!
+}
+
 # ================INPUTS================
 input SecurityQuestionResponseInput {
 	userID: String!
@@ -84,17 +104,25 @@ input SecurityQuestionResponseInput {
 
 # ================QUERIES================
 type Query  {
+	# Onboarding apis
 	login(phoneNumber: String!, pin: String!, flavour: Flavour!): LoginResponse! @lambda 
 	setUserPIN(userID: String!, pin: String!, confirmPin: String!, flavour: Flavour!): Boolean! @lambda
 	verifyPIN(userID: String!, pin: String!, confirmPin: String!, flavour: Flavour!): Boolean! @lambda
-	getSecurityQuestions(flavour: Flavour!): [SecurityQuestion]! @lambda
 	sendOTP(userID: String!, flavour: Flavour!): String! @lambda
 	resendOTP(userID: String!, flavour: Flavour!): String! @lambda
+	verifyOTP(userID: String!, otp: String!, flavour: Flavour!): VerifyOTPResponse! @lambda
+	getSecurityQuestions(flavour: Flavour!): [SecurityQuestion]! @lambda
+	listTerms(flavour: Flavour!): Terms! @lambda
+
+	# TODO: add update user profile api
+
+
+	# Home page apis
+	getHomeFeed(): HomeFeedResponse! @lambda
 }
 
 # ================MUTATIONS================
 type Mutation  {
 	reviewTerms(userID: String!, accepted: Boolean!, flavour: Flavour!): Boolean! @lambda 
-	listTerms(flavour: Flavour!): Terms! @lambda
 	recordSecurityQuestionResponses(input: [SecurityQuestionResponseInput!]!): Boolean! @lambda
 }
