@@ -27,6 +27,25 @@ enum ContentType {
 	ARTICLE
 }
 
+enum ClientType {
+	PMTCT
+	OVC
+}
+
+enum AddressType {
+	POSTAL
+	PHYSICAL
+	BOTH
+}
+
+enum RelationshipType {
+	NEXT_OF_KIN
+	EMPLOYER
+	EMERGENCY_CONTACT
+	CHILD
+	OTHER
+}
+
 # ================TYPES================
 type Contact {
 	contactType: ContactType!
@@ -36,17 +55,51 @@ type Contact {
 }
 
 type User {
-    userName: String
-    displayName: String
-    firstName: String
+    userName: String!
+    displayName: String!
+    firstName: String!
     middleName: String
-    lastName: String
-    userType: UserType
-    gender: Gender
-    active: Boolean
-    contacts: [Contact]
+    lastName: String!
+    userType: UserType!
+    gender: Gender!
+    active: Boolean!
+    contacts: [Contact!]!
     languages: [String]
-    termsAccepted: Boolean
+    termsAccepted: Boolean!
+}
+
+type Address {
+	addressType: AddressType!
+	text: String!
+	country: String!
+	postalCode: String
+	county: String
+	active: Boolean!
+}
+
+type RelatedPerson {
+	active: Boolean!
+	relatedTo: String!
+	relationshipType: RelationshipType!
+	firstName: String!
+	lastName: String!
+	otherName: String
+	gender: Gender!
+	dateOfBirth: String!
+	addresses: [Address!]
+	contacts: [Contact!]
+}
+
+type ClientProfile {
+	user: User!
+	treatmentEnrollmentDate: String
+	clientType: ClientType!
+	active: Boolean!
+	addresses: [Address!]!
+	relatedPersons: [RelatedPerson]
+	facilityID: String!
+	treatmentBuddy: String
+	clientCounselled: Boolean!
 }
 
 type AuthCredentials  {
