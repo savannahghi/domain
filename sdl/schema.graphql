@@ -110,7 +110,7 @@ type AuthCredentials  {
 
 type AuthCredentialsResponse {
 	authCredentials: AuthCredentials!
-	user: User!
+	clientProfile: ClientProfile!
 }
 
 type Terms  {
