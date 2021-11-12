@@ -37,3 +37,35 @@ query login($phoneNumber: String!, $pin: String!, $flavour: Flavour!) {
   "flavour": "CONSUMER"
 }
 
+
+query setUserPIN($pin: String!, $confirmPin: String!, $flavour: Flavour!, $userID: String!) {
+  setUserPIN(confirmPin: $confirmPin, flavour: $flavour, pin: $pin, userID: $userID)
+}
+
+{
+  "pin": "0000",
+  "confirmPin": "0000",
+  "userID": "some-user-id",
+  "flavour": "CONSUMER"
+}
+
+query fetchContent($limit: Int!, $tags: [String!]! ) {
+  fetchContent(limit: $limit, tags: $tags) {
+    authorAvatar
+    body
+    contentType
+    createdAt
+    estimate
+    heroImage
+    isNew
+    publicLink
+    title
+    tags
+    author
+  }
+}
+
+{
+  "limit": 10,
+  "tags": ["health", "fitness"]
+}

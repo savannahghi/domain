@@ -21,6 +21,11 @@ enum ContactType {
     OFFICIAL
 }
 
+enum ContentType {
+	VIDEO
+	AUDIO
+	ARTICLE
+}
 
 # ================TYPES================
 type Contact {
@@ -79,20 +84,23 @@ type SecurityQuestionResponse {
 	response: String!
 }
 
-
 type VerifyOTPResponse {
 	response: Boolean!
 	code: String
 }
 
 type Content {
-	
-}
-
-type HomeFeedResponse {
-	lastMoodRecordedDate: String!
-	newContent: [Content!]!
-	suggestedGroups: [Group!]!
+	title: String!
+	body: String!
+	author: String!
+	authorAvatar: String!
+	heroImage: String!
+	contentType: ContentType!
+	publicLink: String!
+	isNew: Boolean!
+	estimate: String!
+	tags: [String]!
+	createdAt: String!
 }
 
 # ================INPUTS================
@@ -116,9 +124,8 @@ type Query  {
 
 	# TODO: add update user profile api
 
-
 	# Home page apis
-	getHomeFeed(): HomeFeedResponse! @lambda
+	fetchContent(limit: Int!, tags: [String!]!): [Content!]! @lambda
 }
 
 # ================MUTATIONS================

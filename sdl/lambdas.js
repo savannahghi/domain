@@ -79,14 +79,32 @@ async function verifyOTP() {
     }
 }
 
-async function getHomeFeed() {
-    return {
-        "lastMoodRecordedDate": "2021-08-23T06:42:05.085216Z",
-        "newContent": [{
-
-        }],
-        "suggestedGroups": [{}]
-    }
+async function fetchContent() {
+    return [{
+        "title": "Tips on how to keep yourself healthy",
+        "body": "<h1>Content will be available here soon",
+        "author": "Abiud Orina",
+        "authorAvatar": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+        "heroImage": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+        "contentType": "ARTICLE",
+        "publicLink": "https://bewell.co.ke/",
+        "isNew": true,
+        "estimate": "5 minutes",
+        "tags": ["Recommended", "Health", "Fitness"],
+        "createdAt": "2021-08-23T06:42:05.085216Z",
+    }, {
+        "title": "Tips on how to keep yourself healthy",
+        "body": "<h1>Content will be available here soon",
+        "author": "Abiud Orina",
+        "authorAvatar": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+        "heroImage": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+        "contentType": "ARTICLE",
+        "publicLink": "https://bewell.co.ke/",
+        "isNew": true,
+        "estimate": "5 minutes",
+        "tags": ["Recommended", "Health", "Fitness"],
+        "createdAt": "2021-08-23T06:42:05.085216Z",
+    }, ]
 }
 
 self.addGraphQLResolvers({
@@ -98,6 +116,7 @@ self.addGraphQLResolvers({
     "Query.sendOTP": sendOTP,
     "Query.resendOTP": sendOTP,
     "Query.verifyOTP": verifyOTP,
+    "Query.fetchContent": fetchContent,
 
     /// Mutations
     "Mutation.setUserPIN": genericBoolResponse,
