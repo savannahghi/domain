@@ -118,6 +118,9 @@ type AuthCredentials  {
 type AuthCredentialsResponse {
 	authCredentials: AuthCredentials!
 	clientProfile: ClientProfile!
+	# Gotcha!!: This could also mean someone's PIN was reset 
+	#           by an admin somewhere else so it can't be a bullet proof 
+	#           solution for determining a first time user
 	pinChangeRequired: Boolean! 
 }
 
@@ -189,7 +192,7 @@ type Query  {
 	verifyOTP(userID: String!, otp: String!, flavour: Flavour!): VerifyOTPResponse! @lambda
 	getSecurityQuestions(flavour: Flavour!): [SecurityQuestion!]! @lambda
 	# The terms returns a terms ID. This will be used when accepting them
-	listTerms: Terms! @lambda
+	getCurrentTerms: Terms! @lambda
 
 	setNickName(userID: String!, nickname: String!): Boolean! @lambda
 
