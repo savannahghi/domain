@@ -81,6 +81,13 @@ async function getSecurityQuestions({ graphql }) {
             "active": true,
             "responseType": "DATE",
         },
+        {
+            "questionStem": "Which county is your clinic located?",
+            "description": "Enter the name of the county in small letters",
+            "flavour": "CONSUMER",
+            "active": true,
+            "responseType": "STRING",
+        },
     ]
 }
 
@@ -101,8 +108,7 @@ async function fetchRecentContent({ graphql }) {
             "title": "Tips on how to keep yourself healthy",
             "body": "<h1>Content will be available here soon",
             "author": "Abiud Orina",
-            "authorAvatar": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
-            "heroImage": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+            "authorAvatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
             "contentType": "ARTICLE",
             "publicLink": "https://bewell.co.ke/",
             "isNew": true,
@@ -113,8 +119,7 @@ async function fetchRecentContent({ graphql }) {
             "title": "Tips for better and healthy living",
             "body": "<h1>Content will be available here soon",
             "author": "Abiud Orina",
-            "authorAvatar": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
-            "heroImage": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+            "authorAvatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
             "contentType": "ARTICLE",
             "publicLink": "https://bewell.co.ke/",
             "isNew": true,
@@ -126,8 +131,7 @@ async function fetchRecentContent({ graphql }) {
             "title": "How to keep fit",
             "body": "<h1>Content will be available here soon",
             "author": "Abiud Orina",
-            "authorAvatar": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
-            "heroImage": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+            "authorAvatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
             "contentType": "ARTICLE",
             "publicLink": "https://bewell.co.ke/",
             "isNew": true,
@@ -197,8 +201,21 @@ async function fetchSuggestedGroups({ graphql }) {
     }, ]
 }
 
+async function recordSecurityQuestionResponses({ graphql }) {
+    return [{
+        "securityQuestionID": "1",
+        "isCorrect": true,
+    }, {
+        "securityQuestionID": "2",
+        "isCorrect": true,
+    }, {
+        "securityQuestionID": "3",
+        "isCorrect": true,
+    }, ]
+}
+
 self.addGraphQLResolvers({
-    // Queries
+    /// Queries
     "Query.login": login,
     "Query.getCurrentTerms": getCurrentTerms,
     "Query.setUserPIN": genericBoolResponse,
@@ -213,6 +230,9 @@ self.addGraphQLResolvers({
 
     /// Mutations
     "Mutation.setUserPIN": genericBoolResponse,
-    "Mutation.reviewTerms": genericBoolResponse,
-    "Mutation.recordSecurityQuestionResponse": genericBoolResponse
+    "Mutation.acceptTerms": genericBoolResponse,
+    "Mutation.recordSecurityQuestionResponse": recordSecurityQuestionResponses,
+    "Mutation.saveContentItem": genericBoolResponse,
+    "Mutation.likeContentItem": genericBoolResponse,
+    "Mutation.shareContentItem": genericBoolResponse,
 })
