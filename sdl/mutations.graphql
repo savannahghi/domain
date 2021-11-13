@@ -1,0 +1,10 @@
+mutation setUserPIN($pin: String!, $confirmPin: String!, $flavour: Flavour!, $userID: String!) {
+  setUserPIN(confirmPin: $confirmPin, flavour: $flavour, pin: $pin, userID: $userID)
+}
+
+{
+  "pin": "0000",
+  "confirmPin": "0000",
+  "userID": "some-user-id",
+  "flavour": "CONSUMER"
+}
