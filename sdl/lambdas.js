@@ -185,19 +185,24 @@ async function fetchContent({ graphql }) {
 async function fetchSuggestedGroups({ graphql }) {
     return [{
         "name": "Ruaraka",
-        "avatar": "1.3k"
+        "avatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
+        "members": "20"
     }, {
         "name": "Mental health",
-        "avatar": "13k"
+        "avatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
+        "members": "50"
     }, {
         "name": "Ruaka self help",
-        "avatar": "1.2k"
+        "avatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
+        "members": "210"
     }, {
         "name": "Ruiru",
-        "avatar": "1.8k"
+        "avatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
+        "members": "10"
     }, {
         "name": "Kasarani",
-        "avatar": "400"
+        "avatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
+        "members": "15"
     }, ]
 }
 
