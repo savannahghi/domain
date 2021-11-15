@@ -1,12 +1,14 @@
-mutation setUserPIN($userID: String!, $pin: String!, $confirmPin: String!, $flavour: Flavour!) {
-  setUserPIN( userID: $userID, pin: $pin, confirmPin: $confirmPin, flavour: $flavour)
+mutation setUserPin($input: PINInput!){
+  setUserPIN(input: $input)
 }
 
 {
-  "userID": "some-user-id",
-  "pin": "0000",
-  "confirmPin": "0000",
-  "flavour": "CONSUMER"
+  "input": {
+    "userID": "some-user-id",
+    "pin": "0000",
+    "confirmPIN": "0000",
+    "flavour": "CONSUMER"
+  }
 }
 
 mutation acceptTerms($userID: String!, $termsID: String!){
