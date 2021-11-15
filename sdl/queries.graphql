@@ -54,17 +54,6 @@ query login($phoneNumber: String!, $pin: String!, $flavour: Flavour!) {
   "flavour": "CONSUMER"
 }
 
-query verifyPIN(userID: String!, $pin: String!, $confirmPin: String!, $flavour: Flavour!) {
-  verifyPIN(userID: $userID, , pin: $pin, confirmPin: $confirmPin, flavour: $flavour)
-}
-
-{
-  "userID": "some-user-id",
-  "pin": "0000",
-  "confirmPin": "0000",
-  "flavour": "CONSUMER"
-}
-
 query sendOTP( $userID: String!, $phoneNumber: String!, $flavour: Flavour!) {
   sendOTP(userID: $userID, phoneNumber: $phoneNumber, flavour: $flavour)
 }

@@ -105,7 +105,7 @@ async function verifyOTP({ graphql }) {
 
 async function fetchRecentContent({ graphql }) {
     return [{
-            "title": "Tips on how to keep yourself healthy",
+            "title": "5 proven ways to prevent COVID-19:Our experts reveal",
             "body": "<h1>Content will be available here soon",
             "author": "Abiud Orina",
             "authorAvatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
@@ -218,7 +218,6 @@ self.addGraphQLResolvers({
     /// Queries
     "Query.login": login,
     "Query.getCurrentTerms": getCurrentTerms,
-    "Query.setUserPIN": genericBoolResponse,
     "Query.getSecurityQuestions": getSecurityQuestions,
     "Query.sendOTP": sendOTP,
     "Query.resendOTP": sendOTP,

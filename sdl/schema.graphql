@@ -181,6 +181,13 @@ input SecurityQuestionResponseInput {
 	response: String!
 }
 
+input PINInput {
+	userID: String!
+	pin: String!
+	confirmPIN: String!
+	flavour: Flavour!
+}
+
 # ================QUERIES================
 type Query  {
 	# Onboarding api specs
@@ -200,7 +207,7 @@ type Query  {
 
 # ================MUTATIONS================
 type Mutation  {
-	setUserPIN(userID: String!, pin: String!, confirmPin: String!, flavour: Flavour!): Boolean! @lambda
+	setUserPIN(input: PINInput!): Boolean! @lambda
 	acceptTerms(userID: String!, termsID: String!): Boolean! @lambda 
 	recordSecurityQuestionResponses(input: [SecurityQuestionResponseInput!]!): [SecurityQuestionResponse!]! @lambda
 
