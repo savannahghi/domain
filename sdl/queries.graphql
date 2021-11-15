@@ -85,14 +85,18 @@ query resendOTP( $userID: String!, $phoneNumber: String!, $flavour: Flavour!) {
   "flavour": "CONSUMER"
 }
 
-query verifyOTP( $userID: String!, $otp: String!, $flavour: Flavour!,) {
-  resendOTP(userID: $userID, otp: $otp,  flavour: $flavour)
+query verifyOTP($userID: String!, $otp: String!, $flavour: Flavour!) {
+  verifyOTP(userID: $userID, otp: $otp, flavour: $flavour) {
+    code
+    response
+  }
 }
+
 
 {
   "userID": "some-user-id",
-  "otp": "111222",
-  "flavour": "CONSUMER"
+  "flavour": "CONSUMER",
+  "otp": "1234"
 }
 
 query getSecurityQuestions($flavour: Flavour!) {
