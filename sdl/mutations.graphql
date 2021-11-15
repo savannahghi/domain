@@ -1,0 +1,72 @@
+mutation setUserPIN($userID: String!, $pin: String!, $confirmPin: String!, $flavour: Flavour!) {
+  setUserPIN( userID: $userID, pin: $pin, confirmPin: $confirmPin, flavour: $flavour)
+}
+
+{
+  "userID": "some-user-id",
+  "pin": "0000",
+  "confirmPin": "0000",
+  "flavour": "CONSUMER"
+}
+
+mutation acceptTerms($userID: String!, $termsID: String!){
+  acceptTerms(userID: $userID, termsID: $termsID)
+}
+
+{
+  "userID": "some-user-id",
+  "termsID": "some-terms-id"
+}
+
+mutation likeContentItem($input: [SecurityQuestionResponseInput!]!){
+  recordSecurityQuestionResponses(input: $input){
+    securityQuestionID
+    isCorrect
+  }
+}
+
+{
+  "input": [
+    {
+      "userID": "some-user-id",
+      "securityQuestionID": "1",
+      "response": "1234"
+    },
+    {
+      "userID": "some-user-id",
+      "securityQuestionID": "2",
+      "response": "09-11-2021"
+    },{
+      "userID": "some-user-id",
+      "securityQuestionID": "3",
+      "response": "Nairobi"
+    }
+  ]
+}
+
+mutation likeContentItem($userID: String!, $contentID: String!){
+  likeContentItem(userID: $userID, contentID: $contentID)
+}
+
+{
+  "userID": "some-user-id",
+  "contentID": "some-terms-id"
+}
+
+mutation saveContentItem($userID: String!, $contentID: String!){
+  saveContentItem(userID: $userID, contentID: $contentID)
+}
+
+{
+  "userID": "some-user-id",
+  "contentID": "some-terms-id"
+}
+
+mutation shareContentItem($userID: String!, $contentID: String!){
+  shareContentItem(userID: $userID, contentID: $contentID)
+}
+
+{
+  "userID": "some-user-id",
+  "contentID": "some-terms-id"
+}

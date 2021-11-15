@@ -1,0 +1,185 @@
+query login($phoneNumber: String!, $pin: String!, $flavour: Flavour!) {
+  login(flavour: $flavour, phoneNumber: $phoneNumber, pin: $pin) {
+    code
+    message
+    credentials {
+      authCredentials {
+        expiresIn
+        idToken
+        refreshToken
+      }
+      clientProfile {
+        treatmentEnrollmentDate
+        treatmentBuddy
+        active
+        addresses {
+          active
+          addressType
+          country
+          county
+          postalCode
+          text
+        }
+        clientCounselled
+        clientType
+        facilityID
+        user {
+          userID
+          active
+          displayName
+          firstName
+          gender
+          languages
+          lastName
+          middleName
+          termsAccepted
+          userName
+          userType
+          contacts {
+            active
+            contact
+            contactType
+            optedIn
+          }
+        }
+      }
+      pinChangeRequired
+    }
+  }
+}
+
+{
+  "phoneNumber": "+254717356476",
+  "pin": "0000",
+  "flavour": "CONSUMER"
+}
+
+query verifyPIN(userID: String!, $pin: String!, $confirmPin: String!, $flavour: Flavour!) {
+  verifyPIN(userID: $userID, , pin: $pin, confirmPin: $confirmPin, flavour: $flavour)
+}
+
+{
+  "userID": "some-user-id",
+  "pin": "0000",
+  "confirmPin": "0000",
+  "flavour": "CONSUMER"
+}
+
+query sendOTP( $userID: String!, $phoneNumber: String!, $flavour: Flavour!) {
+  sendOTP(userID: $userID, phoneNumber: $phoneNumber, flavour: $flavour)
+}
+
+{
+  "userID": "some-user-id",
+  "phoneNumber": "+254717356476",
+  "flavour": "CONSUMER"
+}
+
+query resendOTP( $userID: String!, $phoneNumber: String!, $flavour: Flavour!) {
+  resendOTP(userID: $userID, phoneNumber: $phoneNumber, flavour: $flavour)
+}
+
+{
+  "userID": "some-user-id",
+  "phoneNumber": "+254717356476",
+  "flavour": "CONSUMER"
+}
+
+query verifyOTP($userID: String!, $otp: String!, $flavour: Flavour!) {
+  verifyOTP(userID: $userID, otp: $otp, flavour: $flavour) {
+    code
+    response
+  }
+}
+
+
+{
+  "userID": "some-user-id",
+  "flavour": "CONSUMER",
+  "otp": "1234"
+}
+
+query getSecurityQuestions($flavour: Flavour!) {
+  getSecurityQuestions(flavour: $flavour) {
+    active
+    description
+    flavour
+    questionStem
+    responseType
+  }
+}
+
+{
+  "flavour": "CONSUMER"
+}
+
+query getCurrentTerms {
+  getCurrentTerms {
+    termsID
+    text
+  }
+}
+
+// No variables needed
+
+query setNickName($userID: String!, $nickname: String!) {
+  setNickName(userID: $userID, nickname: $nickname)
+}
+
+{
+  "userID": "some-user-id",
+  "nickname": "Kowalski"
+}
+
+
+query fetchRecentContent {
+  fetchRecentContent {
+    author
+    authorAvatar
+    body
+    contentID
+    contentType
+    createdAt
+    estimate
+    heroImage
+    isNew
+    publicLink
+    tags
+    title
+  }
+}
+
+# No variables for this one
+
+query fetchContent($limit: Int!, $tags: [String!]! ) {
+  fetchContent(limit: $limit, tags: $tags) {
+    author
+    authorAvatar
+    body
+    contentID
+    contentType
+    createdAt
+    estimate
+    heroImage
+    isNew
+    publicLink
+    tags
+    title
+  }
+}
+
+{
+  "limit": 10,
+  "tags": ["health", "fitness"]
+}
+
+query fetchSuggestedGroups {
+  fetchSuggestedGroups {
+    avatar
+    members
+    name
+  }
+}
+
+# No variables for this one
+
