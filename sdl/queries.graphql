@@ -109,17 +109,14 @@ query getSecurityQuestions($flavour: Flavour!) {
   "flavour": "CONSUMER"
 }
 
-query getCurrentTerms($flavour: Flavour!) {
-  getCurrentTerms(flavour: $flavour) {
+query getCurrentTerms {
+  getCurrentTerms {
     termsID
     text
   }
 }
 
-{
-  "flavour": "CONSUMER"
-}
-
+// No variables needed
 
 query setNickName($userID: String!, $nickname: String!) {
   setNickName(userID: $userID, nickname: $nickname)

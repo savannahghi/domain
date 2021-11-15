@@ -1,6 +1,6 @@
 // You can type/paste your script here
 
-async function login({ graphql }) {
+async function login({ graphql, args }) {
     return {
         "credentials": {
             "authCredentials": {
@@ -56,8 +56,8 @@ async function login({ graphql }) {
 
 async function getCurrentTerms({ graphql }) {
     return {
-        "text": "terms will be available here soon",
-        "flavour": "CONSUMER"
+        "termsID": "some-terms-id",
+        "text": "Terms will be available here soon",
     }
 }
 
