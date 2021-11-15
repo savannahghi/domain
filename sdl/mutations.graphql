@@ -72,3 +72,12 @@ mutation shareContentItem($userID: String!, $contentID: String!){
   "userID": "some-user-id",
   "contentID": "some-terms-id"
 }
+
+mutation setNickName($userID: String!, $nickname: String!) {
+  setNickName(userID: $userID, nickname: $nickname)
+}
+
+{
+  "userID": "some-user-id",
+  "nickname": "Kowalski"
+}

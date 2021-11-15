@@ -1,0 +1,220 @@
+{
+    "data": {
+        "getFeed": {
+            "uid": "e9ArwZKUh7URv2QBnpBOBcAm17u2",
+            "flavour": "PRO",
+            "isAnonymous": false,
+            "actions": [{
+                    "id": "1yke1r3TzOnIdt8fWKyTsCjKEMR",
+                    "sequenceNumber": 1,
+                    "name": "SEARCH_PATIENT",
+                    "actionType": "SECONDARY",
+                    "handling": "FULL_PAGE",
+                    "allowAnonymous": false
+                },
+                {
+                    "id": "1yke1nY9BwGp0vZtqIzYTicmGpV",
+                    "sequenceNumber": 1,
+                    "name": "ADD_PATIENT",
+                    "actionType": "PRIMARY",
+                    "handling": "FULL_PAGE",
+                    "allowAnonymous": false
+                }
+            ],
+            "nudges": [{
+                    "id": "1yke1srB7voTLosobRzFGZI27MF",
+                    "sequenceNumber": 1,
+                    "visibility": "SHOW",
+                    "status": "PENDING",
+                    "title": "Add Primary Email Address",
+                    "text": "Please add and verify your primary email address",
+                    "actions": [{
+                        "id": "1yke1tTmttiA59gs3XX8nlS9RXd",
+                        "sequenceNumber": 1,
+                        "name": "VERIFY_EMAIL",
+                        "actionType": "PRIMARY",
+                        "handling": "FULL_PAGE",
+                        "allowAnonymous": false
+                    }],
+                    "groups": null,
+                    "users": [
+                        "e9ArwZKUh7URv2QBnpBOBcAm17u2"
+                    ],
+                    "links": [{
+                        "id": "1yke20AkTDMUaK15ijncn9VKzpv",
+                        "url": "https://assets.healthcloud.co.ke/nudges/verify_email.png",
+                        "linkType": "PNG_IMAGE"
+                    }],
+                    "notificationChannels": null
+                },
+                {
+                    "id": "1yke1rEkrKBxa0v1kCxh5GFE4vR",
+                    "sequenceNumber": 1,
+                    "visibility": "SHOW",
+                    "status": "PENDING",
+                    "title": "Setup your partner account",
+                    "text": "Create a partner account to begin transacting on Be.Well",
+                    "actions": [{
+                        "id": "1yke1rSQv0omU8shvtwOAi3HvkM",
+                        "sequenceNumber": 1,
+                        "name": "PARTNER_ACCOUNT_SETUP",
+                        "actionType": "PRIMARY",
+                        "handling": "FULL_PAGE",
+                        "allowAnonymous": false
+                    }],
+                    "groups": null,
+                    "users": [
+                        "e9ArwZKUh7URv2QBnpBOBcAm17u2"
+                    ],
+                    "links": [{
+                        "id": "1yke1nRuDG42FAQfXWpvh29hNgo",
+                        "url": "https://assets.healthcloud.co.ke/nudges/complete_profile.png",
+                        "linkType": "PNG_IMAGE"
+                    }],
+                    "notificationChannels": null
+                }
+            ],
+            "items": [{
+                    "id": "cf3fd269-2a92-4c36-95b8-a87203577791",
+                    "sequenceNumber": 1635159522,
+                    "expiry": "2122-01-31T09:35:19Z",
+                    "persistent": false,
+                    "status": "PENDING",
+                    "visibility": "SHOW",
+                    "label": "WELCOME",
+                    "icon": {
+                        "id": "20zlVMXYxzl4iEnFPDxRDXlMfEh",
+                        "url": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "linkType": "PNG_IMAGE"
+                    },
+                    "author": "Be.Well Team",
+                    "tagline": "here-are-5-important-things-you-need-to-know-when-choosing-the-right-health-insurance-for-your-parents-guardians-and-seniors",
+                    "timestamp": "2021-10-29T13:43:04+03:00",
+                    "summary": "...",
+                    "text": "<figure class=\"kg-card kg-embed-card\"><iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/iVpF-aPqhso?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></figure>",
+                    "links": [{
+                        "id": "20zlVNAP64Pz6fcGGUHofdvXgnQ",
+                        "url": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "linkType": "DEFAULT",
+                        "thumbnail": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "title": "CMS Item default Icon"
+                    }],
+                    "actions": [],
+                    "conversations": []
+                },
+                {
+                    "id": "a05b8c0f-e4a1-4ff5-923b-33786326706f",
+                    "sequenceNumber": 1630503725,
+                    "expiry": "2122-01-31T09:35:19Z",
+                    "persistent": false,
+                    "status": "PENDING",
+                    "visibility": "SHOW",
+                    "label": "WELCOME",
+                    "icon": {
+                        "id": "20zlVRrR8IxthUkZwSYCPgthgSr",
+                        "url": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "linkType": "PNG_IMAGE"
+                    },
+                    "author": "Be.Well Team",
+                    "tagline": "5-proven-ways-to-prevent-covid-19-our-experts-reveal",
+                    "timestamp": "2021-11-15T11:44:52+03:00",
+                    "summary": "\n--------------------------------------------------------------------------------\n\nThe coronavirus pandemic has affected our lives, our ...",
+                    "text": "<hr><p>The coronavirus pandemic has affected our lives, our economy, and nearly every corner of the globe. Almost 4 billion vaccine doses have been administered worldwide — 53 for every 100 people. But the worldwide numbers of infections continue to rise, driven by the Delta variant with highly vaccinated regions like Western Europe and the United States, where cases are relatively low but climbing fast.</p><p>As cases continue to surge, you can take some steps to keep yourself and your family safe. Here are some tips from our trusted science team.</p><ul><li><strong>Understand the coronavirus and symptoms: </strong>The first step is to understand the coronavirus and the symptoms of coronavirus infection. Common symptoms of a coronavirus infection include shortness of breath, a cough that gets more severe over time, fever, chills, and fatigue. Less common symptoms include <em>repeated shaking with chills, sore throat, headache, muscle aches and pains, loss of taste or smell, a stuffy or runny nose, gastrointestinal symptoms such as diarrhoea, nausea, and vomiting, discoloration of fingers or toes, pink eye, and rash.</em></li><li><strong>Avoid or limit contact with infected or people showing symptoms:</strong> The best way to prevent the transmission of the virus is to avoid or limit contact with people who are showing symptoms of COVID-19 or any respiratory infection. The next best thing you can do is practice good hygiene and physical distancing to help prevent bacteria and viruses from being transmitted.</li><li><strong><strong><strong>Wear a mask: </strong></strong></strong>The CDC (Centers for Disease Control) recommends that you wear a mask that covers your mouth and nose. When worn correctly, and by a large percentage of the public, these masks can help to slow the transmission of SARS-CoV-2, the virus that causes COVID19 as masks block the respiratory droplets of people who may be asymptomatic or people who have the virus but have gone undiagnosed.</li><li><strong><strong>Seek care if you experience any of these symptoms: </strong>I</strong>f you or the person with COVID-19 experiences emergency warning signs, medical attention is needed immediately. Warning signs include:<strong> </strong><em>trouble breathing, persistent chest pain or pressure, confusion, bluish lips or face, inability to stay awake or Pale, grey or colored skin, lips, or nail beds — depending on skin tone.</em></li><li><strong>Protect others if you’re ill: </strong>If you're ill with COVID-19, you can help prevent the spread of infection with the COVID-19 virus by staying home from work, school, and public areas unless it's to get medical care, avoiding using public transportation, ride-sharing services or taxis, stay isolated in one room, away from your family and other people, as much as possible, avoid shared space in your home as much as possible and clean often-touched surfaces in your separate room and bathroom, such as doorknobs, light switches, electronics and counters, every day and frequently wash your hands with soap and water for at least 20 seconds, or use an alcohol-based hand sanitizer that contains at least 60% alcohol.</li></ul><hr><p>Stay tuned for more curated articles just for you! 😃</p><p>Sources: </p><p><a href=\"https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines/advice\">https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines/advice</a></p><figure class=\"kg-card kg-bookmark-card\"><a class=\"kg-bookmark-container\" href=\"https://www.cdc.gov/coronavirus/2019-ncov/vaccines/expect/after.html\"><div class=\"kg-bookmark-content\"><div class=\"kg-bookmark-title\">What to Expect after Getting a COVID-19 Vaccine</div><div class=\"kg-bookmark-description\">COVID-19 vaccination will help protect you from getting COVID-19. Learn about the potential side effects of the COVID-19 vaccine.</div><div class=\"kg-bookmark-metadata\"><img class=\"kg-bookmark-icon\" src=\"https://www.cdc.gov/TemplatePackage/4.0/assets/imgs/favicon.ico\" alt=\"\"><span class=\"kg-bookmark-author\">Centers for Disease Control and Prevention</span><span class=\"kg-bookmark-publisher\">CDC</span></div></div><div class=\"kg-bookmark-thumbnail\"><img src=\"https://www.cdc.gov/coronavirus/2019-ncov/images/vaccines/social-media/vaccines-expectations_600px.png\" alt=\"\"></div></a></figure>",
+                    "links": [{
+                        "id": "20zlVNQ0flr6C4wH6UU5PdMkJdZ",
+                        "url": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "linkType": "DEFAULT",
+                        "thumbnail": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "title": "CMS Item default Icon"
+                    }],
+                    "actions": [],
+                    "conversations": []
+                },
+                {
+                    "id": "ad08fa65-8b27-4856-b5c5-bf1e54fa85f1",
+                    "sequenceNumber": 1624618680,
+                    "expiry": "2122-01-31T09:35:19Z",
+                    "persistent": false,
+                    "status": "PENDING",
+                    "visibility": "SHOW",
+                    "label": "WELCOME",
+                    "icon": {
+                        "id": "20zlVRMZVKqbq0gCRm9jX90As9X",
+                        "url": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "linkType": "PNG_IMAGE"
+                    },
+                    "author": "Be.Well Team",
+                    "tagline": "no-more-surprises-here-are-frequently-asked-medical-insurance-questions",
+                    "timestamp": "2021-06-25T14:01:44+03:00",
+                    "summary": "There's something new to learn every day about insurance. To avoid surprises,\nwe've addressed frequently asked questions about medical c...",
+                    "text": "<p>There's something new to learn every day about insurance. To avoid surprises, we've addressed frequently asked questions about medical covers.</p><p>Here’s a quick guide:</p><p><strong>Do all insurance companies have a waiting period?</strong></p><p>A waiting period is the period during which you can’t claim some or all benefits of the health insurance from their insurance provider.</p><p>Yes, they all have a waiting period. The need for this is to mitigate the risk of you seeking insurance after falling ill.</p><p><strong>Does every cover have limits?</strong></p><p>Yes. Every cover will have limits. This is the maximum amount you can spend based on your current policy. This will vary from inpatient, outpatient and specialist covers under your policy. The inpatient limit is the total amount of money available for use in the event you are hospitalized.</p><p><strong>Why is Co-payment necessary?</strong></p><p>Co-payment will be introduced to you when you need to access services from specialists or from certain high-end facilities that have higher costs of care. To access any of these services you will be required to pay an out of pocket cost that varies with every facility.</p><p><strong>How do I know the hospitals and specialists I can access?</strong></p><p>You can access the provider panel (list of hospitals), by adding your cover on the Be.Well app and identify what hospitals/care facilities you can visit or make an appointment.</p><p><strong>How do I get access to my billed services or breakdown statement after a visit?</strong></p><p>Upon adding your cover on the Be.Well App, you can instantly access your bill or statement after your visit. </p><p>Keep following our articles to make your insurance experience smoother.</p>",
+                    "links": [{
+                        "id": "20zlVR84liimjEoiJz074RC6WkI",
+                        "url": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "linkType": "DEFAULT",
+                        "thumbnail": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "title": "CMS Item default Icon"
+                    }],
+                    "actions": [],
+                    "conversations": []
+                },
+                {
+                    "id": "78e6f6c3-4414-4bbb-957e-22f222b4964f",
+                    "sequenceNumber": 1624523580,
+                    "expiry": "2122-01-31T09:35:19Z",
+                    "persistent": false,
+                    "status": "PENDING",
+                    "visibility": "SHOW",
+                    "label": "WELCOME",
+                    "icon": {
+                        "id": "20zlVKKyP6C1PVi5hGMMQed5dTx",
+                        "url": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "linkType": "PNG_IMAGE"
+                    },
+                    "author": "Be.Well Team",
+                    "tagline": "insurance-simplified",
+                    "timestamp": "2021-06-24T12:09:39+03:00",
+                    "summary": "Top 12 Most Common Medical Insurance Terms Made Easy.\n\nA soft skill they should most definitely teach in every school: how to simply\nrea...",
+                    "text": "<p><strong>Top 12 Most Common Medical Insurance Terms Made Easy.</strong></p><p>A soft skill they should most definitely teach in every school: how to simply read, buy and<br>understand medical insurance. We have made medical insurance the easiest it has ever been!<br>So let’s get right into it. Let’s define a few terms. The simple way. </p><p><strong>Common Insurance Terms</strong><br></p><p><strong>Benefits:</strong><br>Any service covered by a health insurance plan in the normal course of your healthcare and<br>obtained after a claim has been made.<br></p><p><strong>Claims:</strong><br>A request made for direct payment or reimbursement for medical service </p><p>insured person has obtained.<br>Co-insurance/percentage participation:<br>Percentage of your bill that you must cover on your own and that will not be paid by the<br>insurer.</p><p><strong>Co-payment:</strong><br>The fixed out-of-pocket amount paid by you, for covered services e.g services like doctor<br>visits, prescription drugs<br>Deductibles:<br>The amount of money that you must pay on your own before you can start to make an in-surance claim.</p><p><strong>Exclusions:</strong><br>When some medicines and procedures do not meet your threshold for services that can be<br>insured against. E.g. cosmetics procedures, food supplements, and elective procedures.<br>Premiums:<br>The amount you pay for your health insurance per month.</p><p><strong>Pre-authorization:</strong><br>A decision by your health insurer or plan that a health care service, treatment plan, prescrip-tion drug or durable medical equipment is medically necessary,except in an emergency.<br></p><p><strong>Insurer/Payor/payer:</strong><br>A person, organization, or entity that pays for the care services administered by a health-<br>care provider. E.g. insurance companies<br></p><p><strong>Schemes:</strong><br>Health insurance plans devised for specific groups of individuals to fit their medical financial<br>needs.<br></p><p><strong>Sub-limits:</strong><br>The cap or extent to which an insurer will pay for claims arising from the insured medical<br>expenses.<br></p><p><strong>Undwrite/Underwriting:</strong><br>The process of evaluating the risk of providing health insurance coverage to a potential in-<br>surer and setting the price accordingly.<br>Make sense? Now that we are off to a great start. Check out our next articles for<br>more on medical insurance.</p>",
+                    "links": [{
+                        "id": "20zlVO1sSgUpyXLBqhRWKmOSClZ",
+                        "url": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "linkType": "DEFAULT",
+                        "thumbnail": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "title": "CMS Item default Icon"
+                    }],
+                    "actions": [],
+                    "conversations": []
+                },
+                {
+                    "id": "20zlVOkQCxlnFG4V9xgVmrMHFAe",
+                    "sequenceNumber": 1637055319,
+                    "expiry": "2122-01-31T09:35:19Z",
+                    "persistent": false,
+                    "status": "PENDING",
+                    "visibility": "SHOW",
+                    "label": "WELCOME",
+                    "icon": {
+                        "id": "20zlVMRySnLISr9AOIaYIFPBt8d",
+                        "url": "https://assets.healthcloud.co.ke/bewell_logo.png",
+                        "linkType": "PNG_IMAGE"
+                    },
+                    "author": "Be.Well Team",
+                    "tagline": "Learn what is Be.Well and how you can benefit from using it",
+                    "timestamp": "2021-11-16T09:35:19Z",
+                    "summary": "Be.Well is a virtual and physical healthcare community.",
+                    "text": "Be.Well is a virtual and physical healthcare community. Our goal is to make it easy for you to access affordable high-quality healthcare - whether online or in person.",
+                    "links": [{
+                        "id": "20zlVOUKlZm2H3pe9LKzjmf5srw",
+                        "url": "https://youtu.be/mKnlXcS3_Z0",
+                        "linkType": "YOUTUBE_VIDEO",
+                        "thumbnail": "https://assets.healthcloud.co.ke/items/videos/thumbs/04_slade.png",
+                        "title": "Slade 360"
+                    }],
+                    "actions": [],
+                    "conversations": []
+                }
+            ]
+        }
+    }
+}

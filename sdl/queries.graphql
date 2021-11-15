@@ -111,15 +111,6 @@ query getCurrentTerms {
 
 // No variables needed
 
-query setNickName($userID: String!, $nickname: String!) {
-  setNickName(userID: $userID, nickname: $nickname)
-}
-
-{
-  "userID": "some-user-id",
-  "nickname": "Kowalski"
-}
-
 
 query fetchRecentContent {
   fetchRecentContent {
