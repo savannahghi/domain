@@ -105,6 +105,7 @@ async function verifyOTP({ graphql }) {
 
 async function fetchRecentContent({ graphql }) {
     return [{
+            "contentID": "some-content-id",
             "title": "5 proven ways to prevent COVID-19:Our experts reveal",
             "body": "<h1>Content will be available here soon",
             "author": "Abiud Orina",
@@ -115,7 +116,9 @@ async function fetchRecentContent({ graphql }) {
             "estimate": "5 minutes",
             "tags": ["Recommended", "Health", "Fitness"],
             "createdAt": "2021-08-23T06:42:05.085216Z",
+            "heroImage": "https://i.postimg.cc/zvW46yxk/wellness.jpg",
         }, {
+            "contentID": "some-content-id",
             "title": "Tips for better and healthy living",
             "body": "<h1>Content will be available here soon",
             "author": "Abiud Orina",
@@ -126,8 +129,10 @@ async function fetchRecentContent({ graphql }) {
             "estimate": "5 minutes",
             "tags": ["Recommended", "Health", "Fitness"],
             "createdAt": "2021-08-23T06:42:05.085216Z",
+            "heroImage": "https://i.postimg.cc/zvW46yxk/wellness.jpg",
         },
         {
+            "contentID": "some-content-id",
             "title": "How to keep fit",
             "body": "<h1>Content will be available here soon",
             "author": "Abiud Orina",
@@ -138,16 +143,19 @@ async function fetchRecentContent({ graphql }) {
             "estimate": "5 minutes",
             "tags": ["Recommended", "Health", "Fitness"],
             "createdAt": "2021-08-23T06:42:05.085216Z",
+            "heroImage": "https://i.postimg.cc/zvW46yxk/wellness.jpg",
         },
     ]
 }
 
 async function fetchContent({ graphql }) {
     return [{
+            "contentID": "some-content-id",
             "title": "Tips on how to keep yourself healthy",
-            "body": "<h1>Content will be available here soon",
+            "body": "The coronavirus pandemic has affected our lives, our economy, and nearly every corner of the globe. Almost 4 billion vaccine doses have been administered worldwide; 53 for every 100 people. But the worldwide numbers of infections continue to rise, driven by the Delta variant with highly vaccinated regions like Western Europe and the United States, where cases are relatively low but climbing fast. As cases continue to surge, you can take some steps to keep yourself and your family safe. Here are some tips from our trusted science team.",
             "author": "Abiud Orina",
             "authorAvatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
+            "heroImage": "https://i.postimg.cc/zvW46yxk/wellness.jpg",
             "contentType": "ARTICLE",
             "publicLink": "https://bewell.co.ke/",
             "isNew": true,
@@ -155,10 +163,12 @@ async function fetchContent({ graphql }) {
             "tags": ["Recommended", "Health", "Fitness"],
             "createdAt": "2021-08-23T06:42:05.085216Z",
         }, {
-            "title": "Tips for better and healthy living",
-            "body": "<h1>Content will be available here soon",
+            "contentID": "some-content-id",
+            "title": "What should my daily intake of calories be?",
+            "body": "An ideal daily intake of calories varies depending on age, metabolism and levels of physical activity, among other things. Generally, the recommended daily calorie intake is 2,000 calories a day for women and 2,500 for men. The term calorie is commonly used as shorthand for kilocalorie. You will find this written as kcal on food packets. Kilojoules (kJ) are the equivalent of kilocalories within the International System of Units, and you'll see both kJ and kcal on nutrition labels. 4.2kJ is equivalent to approximately 1kcal.",
             "author": "Abiud Orina",
             "authorAvatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
+            "heroImage": "https://i.postimg.cc/zvW46yxk/wellness.jpg",
             "contentType": "ARTICLE",
             "publicLink": "https://bewell.co.ke/",
             "isNew": true,
@@ -166,18 +176,7 @@ async function fetchContent({ graphql }) {
             "tags": ["Recommended", "Health", "Fitness"],
             "createdAt": "2021-08-23T06:42:05.085216Z",
         },
-        {
-            "title": "How to keep fit",
-            "body": "<h1>Content will be available here soon",
-            "author": "Abiud Orina",
-            "authorAvatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
-            "contentType": "ARTICLE",
-            "publicLink": "https://bewell.co.ke/",
-            "isNew": true,
-            "estimate": "5 minutes",
-            "tags": ["Recommended", "Health", "Fitness"],
-            "createdAt": "2021-08-23T06:42:05.085216Z",
-        },
+
     ]
 }
 
@@ -229,7 +228,6 @@ self.addGraphQLResolvers({
     "Query.verifyOTP": verifyOTP,
     "Query.fetchRecentContent": fetchRecentContent,
     "Query.fetchContent": fetchContent,
-    "Query.setNickName": genericBoolResponse,
     "Query.fetchSuggestedGroups": fetchSuggestedGroups,
 
     /// Mutations
@@ -239,4 +237,5 @@ self.addGraphQLResolvers({
     "Mutation.saveContentItem": genericBoolResponse,
     "Mutation.likeContentItem": genericBoolResponse,
     "Mutation.shareContentItem": genericBoolResponse,
+    "Mutation.setNickName": genericBoolResponse,
 })

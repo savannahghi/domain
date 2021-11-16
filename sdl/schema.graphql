@@ -197,7 +197,6 @@ type Query  {
 	verifyOTP(userID: String!, otp: String!, flavour: Flavour!): VerifyOTPResponse! @lambda
 	getSecurityQuestions(flavour: Flavour!): [SecurityQuestion!]! @lambda
 	getCurrentTerms: Terms! @lambda
-	setNickName(userID: String!, nickname: String!): Boolean! @lambda
 
 	# Home page api specs
 	fetchRecentContent: [Content!]! @lambda
@@ -210,6 +209,7 @@ type Mutation  {
 	setUserPIN(input: PINInput!): Boolean! @lambda
 	acceptTerms(userID: String!, termsID: String!): Boolean! @lambda 
 	recordSecurityQuestionResponses(input: [SecurityQuestionResponseInput!]!): [SecurityQuestionResponse!]! @lambda
+	setNickName(userID: String!, nickname: String!): Boolean! @lambda
 
 	# Home feed api specs
 	likeContentItem(userID: String!, contentID:String!): Boolean! @lambda
