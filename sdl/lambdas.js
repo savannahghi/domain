@@ -2,52 +2,50 @@
 
 async function login({ graphql, args }) {
     return {
-        "credentials": {
-            "authCredentials": {
-                "idToken": "some id token",
-                "refreshToken": "some refresh token",
-                "expiresIn": "3600",
-            },
-            "clientProfile": {
-                "user": {
-                    "userID": "some-user-id",
-                    "userName": "Kowalski",
-                    "displayName": "Kowalski",
-                    "firstName": "Juha",
-                    "lastName": "Kalulu",
-                    "userType": "CLIENT",
-                    "gender": "MALE",
-                    "active": true,
-                    "contacts": [{
-                            "contactType": "PRIMARY",
-                            "contact": "+254717356476",
-                            "active": true,
-                            "optedIn": true,
-                        },
-                        {
-                            "contactType": "SECONDARY",
-                            "contact": "+254712345678",
-                            "active": true,
-                            "optedIn": true,
-                        },
-                    ],
-                    "languages": ["en", "sw"],
-                    "termsAccepted": "true",
-                },
-                "treatmentEnrollmentDate": "21 Nov 2021",
-                "clientType": "PMTCT",
+        "clientProfile": {
+            "user": {
+                "userID": "some-user-id",
+                "userName": "Kowalski",
+                "displayName": "Kowalski",
+                "firstName": "Juha",
+                "lastName": "Kalulu",
+                "userType": "CLIENT",
+                "gender": "MALE",
                 "active": true,
-                "addresses": [{
-                    "addressType": "POSTAL",
-                    "text": "One Padmore",
-                    "country": "Kenya",
-                    "postalCode": "00300",
-                    "active": true
-                }],
-                "facilityID": "some-facility-id",
-                "clientCounselled": true
+                "contacts": [{
+                        "contactType": "PRIMARY",
+                        "contact": "+254717356476",
+                        "active": true,
+                        "optedIn": true,
+                    },
+                    {
+                        "contactType": "SECONDARY",
+                        "contact": "+254712345678",
+                        "active": true,
+                        "optedIn": true,
+                    },
+                ],
+                "languages": ["en", "sw"],
+                "termsAccepted": "true",
+                "pinChangeRequired": false,
             },
-            "pinChangeRequired": true
+            "treatmentEnrollmentDate": "21 Nov 2021",
+            "clientType": "PMTCT",
+            "active": true,
+            "addresses": [{
+                "addressType": "POSTAL",
+                "text": "One Padmore",
+                "country": "Kenya",
+                "postalCode": "00300",
+                "active": true
+            }],
+            "facilityID": "some-facility-id",
+            "clientCounselled": true
+        },
+        "credentials": {
+            "idToken": "some id token",
+            "refreshToken": "some refresh token",
+            "expiresIn": "3600",
         },
         "code": "0",
         "message": "success",

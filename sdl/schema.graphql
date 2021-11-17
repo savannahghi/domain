@@ -73,6 +73,7 @@ type User {
     contacts: [Contact!]!
     languages: [String]
     termsAccepted: Boolean!
+	pinChangeRequired: Boolean!
 }
 
 type Address {
@@ -115,24 +116,16 @@ type AuthCredentials  {
 	expiresIn: String!
 }
 
-type AuthCredentialsResponse {
-	authCredentials: AuthCredentials!
-	clientProfile: ClientProfile!
-	# Gotcha!!: This could also mean someone's PIN was reset 
-	#           by an admin somewhere else so it can't be a bullet proof 
-	#           solution for determining a first time user
-	pinChangeRequired: Boolean! 
-}
-
 type Terms  {
 	termsID: String!
 	text: String!
 }
 
 type LoginResponse  {
-	credentials: AuthCredentialsResponse!
-	code: String! 
-	message: String 
+	credentials: AuthCredentials!
+	clientProfile: ClientProfile!
+	code: String!,
+	message: String!
 }
 
 type SecurityQuestion {
