@@ -21,6 +21,11 @@ type SecurityQuestionResponse struct {
 	Response           string // TODO: ensure we can encode/decode different response types
 }
 
+type RecordSecurityQuestionResponse struct {
+	SecurityQuestionID string
+	IsCorrect          bool
+}
+
 type IGetSecurityQuestions interface {
 	// TODO: try to give the same user a stable set of questions (order)
 	//
@@ -36,7 +41,7 @@ type IRecordSecurityQuestionResponses interface {
 	// TODO Wire in metrics
 	RecordSecurityQuestionResponses(
 		responses []*SecurityQuestionResponse,
-	) (bool, error)
+	) ([]*RecordSecurityQuestionResponse, error)
 }
 
 type IVerifySecurityQuestionResponses interface {

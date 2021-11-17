@@ -144,7 +144,7 @@ type SecurityQuestion {
 	responseType: SecurityQuestionResponseType!
 }
 
-type SecurityQuestionResponse {
+type RecordSecurityQuestionResponse {
 	securityQuestionID: String!
 	isCorrect: Boolean!
 }
@@ -209,7 +209,7 @@ type Query  {
 type Mutation  {
 	setUserPIN(input: PINInput!): Boolean! @lambda
 	acceptTerms(userID: String!, termsID: String!): Boolean! @lambda 
-	recordSecurityQuestionResponses(input: [SecurityQuestionResponseInput!]!): [SecurityQuestionResponse!]! @lambda
+	recordSecurityQuestionResponses(input: [SecurityQuestionResponseInput!]!): [RecordSecurityQuestionResponse!]! @lambda
 	setNickName(userID: String!, nickname: String!): Boolean! @lambda
 
 	# Home feed api specs
