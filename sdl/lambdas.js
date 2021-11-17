@@ -57,7 +57,7 @@ async function login({ graphql, args }) {
 async function getCurrentTerms({ graphql }) {
     return {
         "termsID": "some-terms-id",
-        "text": "Terms will be available here soon",
+        "text": "The use of a web and mobile based portal the Portal is offered as addition to care and support provided at the clinic. The Portal uses encryption to reduce the risk that unauthorized persons will read communications, information or attachments in the Portal. Only someone who knows the correct password to log in to the Portal is authorized to use the Portal. nDuring your visit, you will be provided information regarding how to enroll in the Portal.The health care provider will register you into the Portal software and will provide you with your access information.\n\nWhen you sign the Terms and Conditions of Use and when you use or access the Portal, you acknowledge that you: 1. have read and understood the Terms and Conditions of Use and agree to be legally bound by that Agreement;and 2. are at least eighteen years old and or have parental consent to agree to the provisions.The Terms and Conditions of Use are provided on the Portal web site for your convenience.You should review these Terms and Conditions of Use because they may be revised from time to time, and will not be sent to you.Your continued access and / or use of the Portal will be your agreement to the new Terms and Conditions.\n\nThese Terms and Conditions of Use apply only to your use of the Portal and do not apply to any other activities by the Facility.",
     }
 }
 
@@ -73,6 +73,7 @@ async function getSecurityQuestions({ graphql }) {
             "flavour": "CONSUMER",
             "active": true,
             "responseType": "NUMBER",
+            "securityQuestionID": "some-question-id"
         },
         {
             "questionStem": "Which month did you start your treatment?",
@@ -80,6 +81,7 @@ async function getSecurityQuestions({ graphql }) {
             "flavour": "CONSUMER",
             "active": true,
             "responseType": "DATE",
+            "securityQuestionID": "some-question-id"
         },
         {
             "questionStem": "Which county is your clinic located?",
@@ -87,6 +89,7 @@ async function getSecurityQuestions({ graphql }) {
             "flavour": "CONSUMER",
             "active": true,
             "responseType": "STRING",
+            "securityQuestionID": "some-question-id"
         },
     ]
 }
@@ -135,6 +138,20 @@ async function fetchRecentContent({ graphql }) {
 
 async function fetchContent({ graphql }) {
     return [{
+            "contentID": "some-content-id",
+            "title": "5 proven ways to prevent COVID-19:Our experts reveal",
+            "body": "The coronavirus pandemic has affected our lives, our economy, and nearly every corner of the globe. Almost 4 billion vaccine doses have been administered worldwide; 53 for every 100 people. But the worldwide numbers of infections continue to rise, driven by the Delta variant with highly vaccinated regions like Western Europe and the United States, where cases are relatively low but climbing fast.\n\nAs cases continue to surge, you can take some steps to keep yourself and your family safe.",
+            "author": "Abiud Orina",
+            "authorAvatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
+            "heroImage": "https://i.postimg.cc/L69hxSyN/health-tips.jpg",
+            "contentType": "ARTICLE",
+            "publicLink": "https://bewell.co.ke/",
+            "isNew": true,
+            "estimate": "3 minutes",
+            "tags": ["Recommended", "Health", "Fitness"],
+            "createdAt": "2021-08-23T06:42:05.085216Z",
+        },
+        {
             "contentID": "some-content-id",
             "title": "Tips on how to keep yourself healthy",
             "body": "The coronavirus pandemic has affected our lives, our economy, and nearly every corner of the globe. Almost 4 billion vaccine doses have been administered worldwide; 53 for every 100 people. But the worldwide numbers of infections continue to rise, driven by the Delta variant with highly vaccinated regions like Western Europe and the United States, where cases are relatively low but climbing fast. As cases continue to surge, you can take some steps to keep yourself and your family safe. Here are some tips from our trusted science team.",

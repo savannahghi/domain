@@ -90,6 +90,7 @@ query verifyOTP($userID: String!, $otp: String!, $flavour: Flavour!) {
 
 query getSecurityQuestions($flavour: Flavour!) {
   getSecurityQuestions(flavour: $flavour) {
+    securityQuestionID
     active
     description
     flavour
