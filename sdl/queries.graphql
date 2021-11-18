@@ -38,6 +38,8 @@ query login($phoneNumber: String!, $pin: String!, $flavour: Flavour!) {
         firstName
         gender
         languages
+        suspended
+        avatar
         contacts {
           active
           contact
