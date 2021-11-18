@@ -173,6 +173,7 @@ input SecurityQuestionResponseInput {
 	userID: String!
 	securityQuestionID: String!
 	response: String!
+	flavour: Flavour!
 }
 
 input PINInput {
