@@ -8,8 +8,10 @@ async function login({ graphql, args }) {
                 "userName": "Kowalski",
                 "displayName": "Kowalski",
                 "firstName": "Juha",
+                "avatar": "https://i.postimg.cc/9XpbrC25/profile-image.png",
                 "lastName": "Kalulu",
                 "userType": "CLIENT",
+                "suspended": false,
                 "gender": "MALE",
                 "active": true,
                 "contacts": [{
