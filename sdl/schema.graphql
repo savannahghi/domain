@@ -16,9 +16,8 @@ enum Gender {
 }
 
 enum ContactType {
-	PRIMARY
-	SECONDARY
-    OFFICIAL
+	PHONE
+	EMAIL
 }
 
 enum ContentType {
@@ -71,7 +70,9 @@ type User {
     userType: UserType!
     gender: Gender!
     active: Boolean!
-    contacts: [Contact!]!
+	dateOfBirth: String!
+    primaryContact: Contact!
+	secondaryContacts: [Contact]
     languages: [String]
     termsAccepted: Boolean!
 	pinChangeRequired: Boolean!
@@ -97,7 +98,8 @@ type RelatedPerson {
 	gender: Gender!
 	dateOfBirth: String!
 	addresses: [Address!]
-	contacts: [Contact!]
+	primaryContact: Contact!
+	secondaryContacts: [Contact]
 }
 
 type ClientProfile {
