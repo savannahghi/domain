@@ -1,0 +1,66 @@
+type SimplePatientRegistrationInput {
+  firstName: String!
+  lastName: String!
+  otherNames: String
+  identificationDocuments: [IdentificationDocument!]
+  birthDate: String!
+  phoneNumbers: [String!]!
+  gender: String!
+}
+
+type IdentificationDocument {
+  type: IdentifierType!
+  number: String!
+}
+
+type Patient {
+  id: ID
+  active: Boolean
+  name: String
+  phoneNumber: [String]
+  gender: PatientGenderEnum
+  birthDate: String
+}
+
+type PatientPayload {
+  patientRecord: Patient!
+  hasOpenEpisodes: Boolean
+}
+
+enum PatientGenderEnum {
+  MALE
+  FAMELA
+  OTHER
+}
+
+enum IdentifierType {
+  NATIONAL_ID
+  PASSPORT
+  ALIEN_ID
+  CCC_NUMBER
+}
+
+mutation createPatient($input: SimplePatientRegistrationInput!) {
+  createPatient(input: $input) {
+    patientRecord {
+      id
+      active
+      name
+      phoneNumber
+      gender
+      birthDate
+    }
+    hasOpenEpisodes
+  }
+}
+
+query patient($id: ID) {
+  getPatientByID(id: $id) {
+    id
+    active
+    name
+    phoneNumber
+    gender
+    birthDate
+  }
+}

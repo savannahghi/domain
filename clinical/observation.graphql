@@ -1,0 +1,61 @@
+enum ObservationStatusEnum {
+  registered
+  preliminary
+  final
+  amended
+  corrected
+  cancelled
+  entered_in_error
+  unknown
+}
+
+type FHIRObservation {
+  id: String!
+  status: ObservationStatusEnum!
+  patientID: String!
+  encounterID: String
+  effectiveDateTime: String!
+  observationValue: String!
+  observationType: String!
+}
+
+input FHIRObservationInput {
+  status: ObservationStatusEnum!
+  patientID: String!
+  encounterID: String
+  effectiveDateTime: String
+  observationValue: String
+  observationType: String!
+}
+
+query GetObservations($patientID: String!) {
+  searchObservations(patientID: $patientID) {
+    id
+    status
+    patientID
+    encounterID
+    effectiveDateTime
+    observationValue
+    observationType
+  }
+}
+
+mutation CreateObservation($input: FHIRObservationInput!) {
+  createObservation(input: $input) {
+    id
+    status
+    patientID
+    encounterID
+    effectiveDateTime
+    observationValue
+    observationType
+  }
+}
+
+type Mutation {
+  createObservation(input: FHIRObservationInput!): FHIRObservation
+}
+
+type query {
+  searchObservations(patientID: String!): [FHIRObservation]
+}
