@@ -1,0 +1,36 @@
+enum EpisodeOfCareStatusEnum {
+  planned
+  waitlist
+  active
+  onhold
+  finished
+  cancelled
+  entered_in_error
+}
+
+type EpisodeOfCare {
+  id: ID!
+  status: EpisodeOfCareStatusEnum!
+  patientID: String!
+  organizationID: String!
+}
+
+input EpisodeOfCareInput {
+  status: EpisodeOfCareStatusEnum!
+  patientID: String!
+}
+
+mutation CreateEpisodeOfCare($input: EpisodeOfCareInput!) {
+  createEpisodeOfCare(input: $input) {
+    id
+    status
+    patientID
+    organizationID
+  }
+}
+
+type Query {
+  searchPatientEpisodeOfCare(patientID: String!): [EpisodeOfCare!]!
+  openOrganizationEpisodes(organizationID: String!): [FHIREpisodeOfCare!]!
+  endEpisode(episodeID: String!): Boolean!
+}
