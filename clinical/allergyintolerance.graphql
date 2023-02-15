@@ -10,7 +10,7 @@ enum AllergyIntoleranceReactionSeverityEnum {
   SEVERE
 }
 
-input FHIRAllergyIntoleranceInput {
+input AllergyIntoleranceInput {
   patientID: String!
   criticality: AllergyIntoleranceCriticalityEnum!
   encounterID: String
@@ -19,7 +19,7 @@ input FHIRAllergyIntoleranceInput {
   substanceCode: Int!
 }
 
-type FHIRAllergyIntolerance {
+type AllergyIntolerance {
   id: ID!
   patientID: String!
   criticality: AllergyIntoleranceCriticalityEnum!
@@ -29,7 +29,7 @@ type FHIRAllergyIntolerance {
   substanceCode: Int!
 }
 
-mutation CreateAllergyIntolerance($input: FHIRAllergyIntoleranceInput!) {
+mutation CreateAllergyIntolerance($input: AllergyIntoleranceInput!) {
   createAllergyIntolerance(input: $input) {
     id
     patientID

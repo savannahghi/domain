@@ -1,0 +1,59 @@
+enum EncounterStatusEnum {
+  planned
+  arrived
+  triaged
+  in_progress
+  onleave
+  finished
+  cancelled
+  entered_in_error
+  unknown
+}
+
+enum EncounterClass {
+  ambulatory
+  emergency
+  field
+  home_health
+  inpatient_encounter
+  inpatient_acute
+  inpatient_non_acute
+  pre_op
+  short_stay
+  virtual
+}
+
+input EncounterInput {
+  status: EncounterStatusEnum!
+  class: EncounterClass!
+  patientID: String!
+  episodeOfCareID: String!
+}
+
+type Encounter {
+  id: String!
+  status: EncounterStatusEnum!
+  class: EncounterClass!
+  patientID: String!
+  episodeOfCareID: String!
+}
+
+mutation CreateEncounter($input: EncounterInput!) {
+  createEncounter(input: $input) {
+    id
+    status
+    class
+    patientID
+    episodeOfCareID
+  }
+}
+
+query GetEncounter($params: params!) {
+  encounter(params: $params) {
+    id
+    status
+    class
+    patientID
+    episodeOfCareID
+  }
+}
