@@ -9,7 +9,7 @@ enum ObservationStatusEnum {
   unknown
 }
 
-type FHIRObservation {
+type Observation {
   id: String!
   status: ObservationStatusEnum!
   patientID: String!
@@ -19,7 +19,7 @@ type FHIRObservation {
   observationType: String!
 }
 
-input FHIRObservationInput {
+input ObservationInput {
   status: ObservationStatusEnum!
   patientID: String!
   encounterID: String
@@ -40,7 +40,7 @@ query GetObservations($patientID: String!) {
   }
 }
 
-mutation CreateObservation($input: FHIRObservationInput!) {
+mutation CreateObservation($input: ObservationInput!) {
   createObservation(input: $input) {
     id
     status
@@ -53,9 +53,9 @@ mutation CreateObservation($input: FHIRObservationInput!) {
 }
 
 type Mutation {
-  createObservation(input: FHIRObservationInput!): FHIRObservation
+  createObservation(input: ObservationInput!): Observation
 }
 
 type query {
-  searchObservations(patientID: String!): [FHIRObservation]
+  searchObservations(patientID: String!): [Observation]
 }
