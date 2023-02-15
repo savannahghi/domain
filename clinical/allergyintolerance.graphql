@@ -1,0 +1,54 @@
+enum AllergyIntoleranceCriticalityEnum {
+  LOW
+  HIGH
+  UNABLE_TO_ASSESS
+}
+
+enum AllergyIntoleranceReactionSeverityEnum {
+  MILD
+  MODERATE
+  SEVERE
+}
+
+input FHIRAllergyIntoleranceInput {
+  patientID: String!
+  criticality: AllergyIntoleranceCriticalityEnum!
+  encounterID: String
+  onsetDateTime: DateTime!
+  severity: AllergyIntoleranceReactionSeverityEnum
+  substanceCode: Int!
+}
+
+type FHIRAllergyIntolerance {
+  id: ID!
+  patientID: String!
+  criticality: AllergyIntoleranceCriticalityEnum!
+  encounterID: String
+  onsetDateTime: DateTime!
+  severity: AllergyIntoleranceReactionSeverityEnum
+  substanceCode: Int!
+}
+
+mutation CreateAllergyIntolerance($input: FHIRAllergyIntoleranceInput!) {
+  createAllergyIntolerance(input: $input) {
+    id
+    patientID
+    criticality
+    encounterID
+    onsetDateTime
+    severity
+    substanceCode
+  }
+}
+
+query GetAllergyIntoleranceByPatientID($patientID: String!) {
+  allergyIntolerance(patientID: $patientID) {
+    id
+    patientID
+    criticality
+    encounterID
+    onsetDateTime
+    severity
+    substanceCode
+  }
+}
