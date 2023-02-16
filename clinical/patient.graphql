@@ -64,3 +64,14 @@ query patient($id: ID) {
     birthDate
   }
 }
+
+type Mutation {
+  deletePatient(id: ID!): Boolean!
+  createPatient(input: SimplePatientRegistrationInput!): Patient!
+}
+
+type query {
+  findPatientsByPhoneNumber(phoneNumber: String!): [Patient]!
+  findPatients(search: String!): [Patient]!
+  #TODO: add update patient
+}
