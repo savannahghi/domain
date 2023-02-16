@@ -57,3 +57,8 @@ query GetEncounter($params: params!) {
     episodeOfCareID
   }
 }
+
+type query {
+  startEncounter(episodeID: String!): String!
+  endEncounter(encounterID: String!): Boolean!
+}

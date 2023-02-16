@@ -1,0 +1,42 @@
+input ConditionInput {
+  patientID: String
+  encounterID: String
+  onsetDate: DateTime
+  note: String
+  condition: String
+}
+
+type Condition {
+  id: ID
+  recordedDate: DateTime
+  patientID: String
+  condition: String
+  encounterID: String
+  onsetDate: DateTime
+  note: String
+}
+
+query PatientConditions($patientId: String!) {
+  getPatientCondition(id: $patientId) {
+    id
+    name {
+      family
+      given
+    }
+    conditions {
+      id
+      condition
+      onsetDate
+      note
+      recordedDate
+    }
+  }
+}
+
+type query {
+  getPatientCondition(patientID: patientID!): [Condition!]!
+}
+
+type Mutation {
+  createCondition(input: ConditionInput!): Condition
+}
