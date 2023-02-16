@@ -54,6 +54,7 @@ mutation CreateObservation($input: ObservationInput!) {
 
 type Mutation {
   createObservation(input: ObservationInput!): Observation
+  deleteObservation(id: ID!): Boolean!
 }
 
 type query {

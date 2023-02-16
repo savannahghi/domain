@@ -31,6 +31,7 @@ mutation CreateEpisodeOfCare($input: EpisodeOfCareInput!) {
 
 type Query {
   searchPatientEpisodeOfCare(patientID: String!): [EpisodeOfCare!]!
-  openOrganizationEpisodes(organizationID: String!): [FHIREpisodeOfCare!]!
+  openOrganizationEpisodes(organizationID: String!): [EpisodeOfCare!]!
+  openEpisodes(patientReference: String!): [EpisodeOfCare!]!
   endEpisode(episodeID: String!): Boolean!
 }

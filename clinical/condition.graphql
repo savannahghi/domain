@@ -38,5 +38,6 @@ type query {
 }
 
 type Mutation {
-  createCondition(input: ConditionInput!): Condition
+  createCondition(input: ConditionInput!): Condition!
+  updateCondition(input: ConditionInput!): Condition!
 }
