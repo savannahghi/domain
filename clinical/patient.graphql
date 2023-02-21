@@ -29,7 +29,7 @@ type PatientPayload {
 
 enum PatientGenderEnum {
   MALE
-  FAMELA
+  FEMALE
   OTHER
 }
 

@@ -1,0 +1,35 @@
+type Organization {
+  id: String!
+  active: Boolean!
+  name: String!
+  identifiers: [Identifier!]!
+  phoneNumbers: [String!]!
+}
+
+type OrganizationPayload {
+  resource: Organization!
+}
+
+type Identifier {
+  value: String!
+  type: OrganizationIdentifierType!
+}
+
+enum OrganizationIdentifierType {
+  SladeCode
+  MFLCode
+}
+
+input CreateOrganizationInput {
+  Name: String!
+  phoneNumber: String!
+  identifier: Identifier!
+}
+
+type Query {
+  searchOrganization(searchParameter: String!): OrganizationPayload!
+}
+
+type Mutation {
+  createOrganization(input: CreateOrganizationInput!): OrganizationPayload!
+}
