@@ -14,18 +14,56 @@ type Observation {
   status: ObservationStatusEnum!
   patientID: String!
   encounterID: String
-  effectiveDateTime: String!
-  observationValue: String!
-  observationType: String!
+  value: String!
 }
 
-input ObservationInput {
+input BloodPressureInput {
   status: ObservationStatusEnum!
   patientID: String!
   encounterID: String
-  effectiveDateTime: String
-  observationValue: String
-  observationType: String!
+  value: String!
+}
+
+input BodyTemperatureInput {
+  status: ObservationStatusEnum!
+  patientID: String!
+  encounterID: String
+  value: String!
+}
+
+input RespiratoryRateInput {
+  status: ObservationStatusEnum!
+  patientID: String!
+  encounterID: String
+  value: String!
+}
+
+input HeartRateInput {
+  status: ObservationStatusEnum!
+  patientID: String!
+  encounterID: String
+  value: String!
+}
+
+input HeightInput {
+  status: ObservationStatusEnum!
+  patientID: String!
+  encounterID: String
+  value: String!
+}
+
+input WeightInput {
+  status: ObservationStatusEnum!
+  patientID: String!
+  encounterID: String
+  value: String!
+}
+
+input BMIInput {
+  status: ObservationStatusEnum!
+  patientID: String!
+  encounterID: String
+  value: String!
 }
 
 query GetObservations($patientID: String!) {
@@ -34,27 +72,19 @@ query GetObservations($patientID: String!) {
     status
     patientID
     encounterID
-    effectiveDateTime
-    observationValue
-    observationType
-  }
-}
-
-mutation CreateObservation($input: ObservationInput!) {
-  createObservation(input: $input) {
-    id
-    status
-    patientID
-    encounterID
-    effectiveDateTime
-    observationValue
-    observationType
+    value
   }
 }
 
 type Mutation {
-  createObservation(input: ObservationInput!): Observation
-  deleteObservation(id: ID!): Boolean!
+  addBloodPressure(input: BloodPressureInput!): Observation!
+  addBodyTemperature(input: BodyTemperatureInput!): Observation!
+  addRespiratoryRate(input: RespiratoryRateInput!): Observation!
+  addHeartRate(input: HeartRateInput!): Observation!
+  addHeight(input: HeightInput!): Observation!
+  addWeight(input: WeightInput!): Observation!
+  addBMI(input: BMIInput!): Observation!
+  removeObservation(id: ID!): Boolean!
 }
 
 type query {
