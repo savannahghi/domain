@@ -1,3 +1,18 @@
+input EncounterInput {
+  status: EncounterStatusEnum!
+  class: EncounterClass!
+  patientID: String!
+  episodeOfCareID: String
+}
+
+type Encounter {
+  id: String!
+  status: EncounterStatusEnum!
+  class: EncounterClass!
+  patientID: String!
+  episodeOfCareID: String
+}
+
 enum EncounterStatusEnum {
   planned
   arrived
@@ -11,54 +26,31 @@ enum EncounterStatusEnum {
 }
 
 enum EncounterClass {
+  # For now we'll start with ambulatory services(outpatient) only
   ambulatory
-  emergency
-  field
-  home_health
-  inpatient_encounter
-  inpatient_acute
-  inpatient_non_acute
-  pre_op
-  short_stay
-  virtual
+  # emergency
+  # field
+  # home_health
+  # inpatient_encounter
+  # inpatient_acute
+  # inpatient_non_acute
+  # pre_op
+  # short_stay
+  # virtual
 }
 
-input EncounterInput {
-  status: EncounterStatusEnum!
-  class: EncounterClass!
-  patientID: String!
-  episodeOfCareID: String!
+type Query {
+  getEncounter(id: String!): Encounter
+  searchEncounters(
+    patientID: String!
+    status: EncounterStatusEnum
+    class: EncounterClass
+  ): [Encounter]
 }
 
-type Encounter {
-  id: String!
-  status: EncounterStatusEnum!
-  class: EncounterClass!
-  patientID: String!
-  episodeOfCareID: String!
-}
-
-mutation CreateEncounter($input: EncounterInput!) {
-  createEncounter(input: $input) {
-    id
-    status
-    class
-    patientID
-    episodeOfCareID
-  }
-}
-
-query GetEncounter($params: params!) {
-  encounter(params: $params) {
-    id
-    status
-    class
-    patientID
-    episodeOfCareID
-  }
-}
-
-type query {
+type Mutation {
+  createEncounter(input: EncounterInput!): Encounter
+  updateEncounter(id: String!, input: EncounterInput!): Encounter
   startEncounter(episodeID: String!): String!
   endEncounter(encounterID: String!): Boolean!
 }
