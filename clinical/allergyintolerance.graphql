@@ -14,7 +14,6 @@ input AllergyIntoleranceInput {
   patientID: String!
   criticality: AllergyIntoleranceCriticalityEnum!
   encounterID: String
-  onsetDateTime: DateTime!
   severity: AllergyIntoleranceReactionSeverityEnum
   substanceCode: Int!
 }
@@ -29,26 +28,16 @@ type AllergyIntolerance {
   substanceCode: Int!
 }
 
-mutation CreateAllergyIntolerance($input: AllergyIntoleranceInput!) {
-  createAllergyIntolerance(input: $input) {
-    id
-    patientID
-    criticality
-    encounterID
-    onsetDateTime
-    severity
-    substanceCode
-  }
+type Query {
+  allergyIntolerance(id: ID!): AllergyIntolerance
+  allergyIntoleranceList(patientID: String!): [AllergyIntolerance]
 }
 
-query GetAllergyIntoleranceByPatientID($patientID: String!) {
-  allergyIntolerance(patientID: $patientID) {
-    id
-    patientID
-    criticality
-    encounterID
-    onsetDateTime
-    severity
-    substanceCode
-  }
+type Mutation {
+  createAllergyIntolerance(input: AllergyIntoleranceInput!): AllergyIntolerance
+  updateAllergyIntolerance(
+    id: ID!
+    input: AllergyIntoleranceInput!
+  ): AllergyIntolerance
+  deleteAllergyIntolerance(id: ID!): Boolean
 }
