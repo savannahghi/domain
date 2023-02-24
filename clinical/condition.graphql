@@ -1,13 +1,23 @@
+enum ConditionStatus {
+  active
+  recurrence
+  relapse
+  inactive
+  remission
+  resolved
+}
+
 input ConditionInput {
-  patientID: String
+  status: ConditionStatus
+  patientID: String!
   encounterID: String
-  onsetDate: DateTime
   note: String
-  condition: String
+  condition: String!
 }
 
 type Condition {
   id: ID
+  status: ConditionStatus
   recordedDate: DateTime
   patientID: String
   condition: String
@@ -16,28 +26,16 @@ type Condition {
   note: String
 }
 
-query PatientConditions($patientId: String!) {
-  getPatientCondition(id: $patientId) {
-    id
-    name {
-      family
-      given
-    }
-    conditions {
-      id
-      condition
-      onsetDate
-      note
-      recordedDate
-    }
-  }
-}
-
 type query {
   getPatientCondition(patientID: patientID!): [Condition!]!
+  #  returns a list of all Condition resources associated with a specific encounter.
+  getEncounterConditions(encounterID: String!): [Condition!]!
+  searchConditions(searchParam: String!): [Condition]
+  getConditionByID(conditionID: String!): Condition!
 }
 
 type Mutation {
   createCondition(input: ConditionInput!): Condition!
   updateCondition(input: ConditionInput!): Condition!
+  deleteCondition(conditionID: String!): Boolean!
 }
