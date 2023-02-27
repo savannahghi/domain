@@ -1,0 +1,31 @@
+type AllergyIntolerance {
+  id: ID!
+  patientID: String!
+  criticality: AllergyIntoleranceCriticalityEnum!
+  encounterID: String
+  onsetDateTime: DateTime!
+  severity: AllergyIntoleranceReactionSeverityEnum
+  substanceCode: Int!
+}
+
+type Condition {
+  id: ID
+  status: ConditionStatus
+  recordedDate: DateTime
+  patientID: String
+  condition: String
+  encounterID: String
+  onsetDate: DateTime
+  note: String
+}
+
+# An example of what the API should return
+# Allergy - Penicillin, Pollen
+# Conditions - Diabetes melingus
+# Medication - Insulin
+
+type Query {
+  allergySummary(patientID: String!): [String!]!
+  conditionSummary(patientID: String!): [String!]!
+  medicationSummary(patientID: String!): [String!]!
+}

@@ -1,0 +1,42 @@
+# The timeline will return the following resources for now, others can be added along the way
+type AllergyIntolerance {
+  id: ID!
+  patientID: String!
+  criticality: AllergyIntoleranceCriticalityEnum!
+  encounterID: String
+  onsetDateTime: DateTime!
+  severity: AllergyIntoleranceReactionSeverityEnum
+  substanceCode: Int!
+}
+
+type Observation {
+  id: String!
+  status: ObservationStatusEnum!
+  patientID: String!
+  encounterID: String
+  value: String!
+}
+
+type Condition {
+  id: ID
+  status: ConditionStatus
+  recordedDate: DateTime
+  patientID: String
+  condition: String
+  encounterID: String
+  onsetDate: DateTime
+  note: String
+}
+
+type HealthTimeline {
+  timeline: [Map]
+  totalCount: Int!
+}
+
+type Query {
+  patientTimeline(
+    patientID: String!
+    offset: Int!
+    limit: Int!
+  ): HealthTimeline!
+}

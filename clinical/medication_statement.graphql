@@ -1,0 +1,43 @@
+type Query {
+  searchMedication(id: ID!): Medication!
+}
+
+type Mutation {
+  createMedicationStatement(
+    input: MedicationStatementInput!
+  ): MedicationStatement
+}
+
+type Medication {
+  name: String!
+  code: String!
+}
+
+type MedicationStatement {
+  id: ID!
+
+  status: MedicationStatementStatusEnum
+
+  medication: Medication!
+
+  patientID: String
+}
+
+input MedicationStatementInput {
+  status: MedicationStatementStatusEnum!
+
+  medicationCode: String!
+
+  patientID: String!
+}
+
+enum MedicationStatementStatusEnum {
+  ACTIVE
+  INACTIVE
+  ENTERED_IN_ERROR
+  INTENDED
+  STOPPED
+  ON_HOLD
+  UNKNOWN
+  NOT_TAKEN
+}
