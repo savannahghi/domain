@@ -12,9 +12,10 @@ enum ObservationStatusEnum {
 type Observation {
   id: String!
   status: ObservationStatusEnum!
-  patientID: String!
-  encounterID: String
+  name: String!
   value: String!
+  patient: Patient!
+  encounter: Encounter
 }
 
 input BloodPressureInput {

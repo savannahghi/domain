@@ -1,4 +1,4 @@
-type SimplePatientRegistrationInput {
+type PatientInput {
   firstName: String!
   lastName: String!
   otherNames: String
@@ -40,7 +40,7 @@ enum IdentifierType {
   CCC_NUMBER
 }
 
-mutation createPatient($input: SimplePatientRegistrationInput!) {
+mutation createPatient($input: PatientInput!) {
   createPatient(input: $input) {
     patientRecord {
       id
@@ -67,7 +67,7 @@ query patient($id: ID) {
 
 type Mutation {
   deletePatient(id: ID!): Boolean!
-  createPatient(input: SimplePatientRegistrationInput!): Patient!
+  createPatient(input: PatientInput!): Patient!
 }
 
 type query {

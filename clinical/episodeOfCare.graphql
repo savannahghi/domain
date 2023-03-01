@@ -8,14 +8,13 @@ enum EpisodeOfCareStatusEnum {
 type EpisodeOfCare {
   id: ID!
   status: EpisodeOfCareStatusEnum!
-  patientID: String!
+  patient: Patient!
 }
 
 input EpisodeOfCareInput {
   status: EpisodeOfCareStatusEnum!
   patientID: String!
 }
-
 
 type Query {
   episodeOfCare(id: ID!): EpisodeOfCare

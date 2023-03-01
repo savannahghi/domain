@@ -1,35 +1,21 @@
 # The timeline will return the following resources for now, others can be added along the way
-type AllergyIntolerance {
+enum ResourceType {
+  AllergyIntolerance
+  Observation
+  Condition
+}
+
+type TimelineResource {
   id: ID!
-  patientID: String!
-  criticality: AllergyIntoleranceCriticalityEnum!
-  encounterID: String
-  onsetDateTime: DateTime!
-  severity: AllergyIntoleranceReactionSeverityEnum
-  substanceCode: Int!
-}
-
-type Observation {
-  id: String!
-  status: ObservationStatusEnum!
-  patientID: String!
-  encounterID: String
-  value: String!
-}
-
-type Condition {
-  id: ID
-  status: ConditionStatus
-  recordedDate: DateTime
-  patientID: String
-  condition: String
-  encounterID: String
-  onsetDate: DateTime
-  note: String
+  resourceType: ResourceType
+  name: String
+  value: String
+  status: String
+  date: Date
 }
 
 type HealthTimeline {
-  timeline: [Map]
+  timeline: [TimelineResource]
   totalCount: Int!
 }
 
