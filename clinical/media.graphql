@@ -1,0 +1,47 @@
+enum MediaStatus {
+  # We'll start with completed for now
+  completed
+}
+
+type Media {
+  id: String!
+  status: MediaStatus!
+  url: String!
+  created: String!
+  data: String!
+  mediaType: String!
+  patientID: String!
+}
+
+type MediaInput {
+  # This will be the base64 of the media passed e.g PDF,Image
+  data: String!
+  #   e.g image/jpeg. It's a mime type
+  mediaType: String!
+  #   Who/What this Media is a record of
+  patientID: String!
+}
+
+type Mutation {
+  createMedia(input: MediaInput!): Media!
+}
+
+type Query {
+  retrievePatientMedia(patientID: String!): [Media]
+}
+
+# Example mutation
+mutation {
+  createMedia(
+    input: {
+      contentType: "image/jpeg"
+      data: "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISERUSEBIVFRUVFRUWFhUVFRcXGBgXGBcVFhUYHSggGBolGxUXITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGxAQGy0lICYvLy8vLzEvLy8tLS0tLy8vLS8tLS8tLS0vLS0tLS0tLS0tLy8tLS0vLy0tLS0tLS0tLf/AABEIAKgBLAMBIgACEQEDEQH/..."
+    }
+  ) {
+    id
+    status
+    mediaType
+    data
+    createdDate
+  }
+}
