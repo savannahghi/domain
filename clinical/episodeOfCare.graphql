@@ -1,18 +1,14 @@
 enum EpisodeOfCareStatusEnum {
   planned
-  waitlist
   active
-  onhold
   finished
   cancelled
-  entered_in_error
 }
 
 type EpisodeOfCare {
   id: ID!
   status: EpisodeOfCareStatusEnum!
   patientID: String!
-  organizationID: String!
 }
 
 input EpisodeOfCareInput {
@@ -20,18 +16,13 @@ input EpisodeOfCareInput {
   patientID: String!
 }
 
-mutation CreateEpisodeOfCare($input: EpisodeOfCareInput!) {
-  createEpisodeOfCare(input: $input) {
-    id
-    status
-    patientID
-    organizationID
-  }
-}
 
 type Query {
-  searchPatientEpisodeOfCare(patientID: String!): [EpisodeOfCare!]!
-  openOrganizationEpisodes(organizationID: String!): [EpisodeOfCare!]!
-  openEpisodes(patientReference: String!): [EpisodeOfCare!]!
-  endEpisode(episodeID: String!): Boolean!
+  episodeOfCare(id: ID!): EpisodeOfCare
+}
+
+type Mutation {
+  createEpisodeOfCare(episodeOfCare: EpisodeOfCareInput!): EpisodeOfCare
+  openEpisodesForPatient(patientID: String!): [EpisodeOfCare]
+  endEpisodeOfCare(id: ID!): EpisodeOfCare
 }
