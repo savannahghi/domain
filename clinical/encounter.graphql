@@ -9,7 +9,7 @@ type Encounter {
   id: String!
   status: EncounterStatusEnum!
   class: EncounterClass!
-  patientID: String!
+  patient: Patient!
   episodeOfCareID: String
 }
 
@@ -18,25 +18,14 @@ enum EncounterStatusEnum {
   arrived
   triaged
   in_progress
-  onleave
   finished
   cancelled
-  entered_in_error
-  unknown
+  
 }
 
 enum EncounterClass {
   # For now we'll start with ambulatory services(outpatient) only
   ambulatory
-  # emergency
-  # field
-  # home_health
-  # inpatient_encounter
-  # inpatient_acute
-  # inpatient_non_acute
-  # pre_op
-  # short_stay
-  # virtual
 }
 
 type Query {

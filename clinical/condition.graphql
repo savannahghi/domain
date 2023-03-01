@@ -19,9 +19,9 @@ type Condition {
   id: ID
   status: ConditionStatus
   recordedDate: DateTime
-  patientID: String
-  condition: String
-  encounterID: String
+  patient: Patient!
+  name: String
+  encounter: Encounter
   onsetDate: DateTime
   note: String
 }
