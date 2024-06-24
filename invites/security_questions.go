@@ -19,6 +19,7 @@ type SecurityQuestionResponse struct {
 	UserID             string // foreign key to question
 	SecurityQuestionID string // foreign key to question
 	Response           string // TODO: ensure we can encode/decode different response types
+	Flavour            string
 }
 
 type RecordSecurityQuestionResponse struct {
